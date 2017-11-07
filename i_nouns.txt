@@ -1,0 +1,15 @@
+alphabet
+factor
+item
+magnet
+material
+motor
+cannibal
+empathy
+parameter
+climate
+energy
+revolution
+system
+woman
+computer
