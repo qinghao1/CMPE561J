@@ -8,6 +8,8 @@ public interface FSTConstants {
     public static final char MORPHEME_BOUNDARY = '^';
     public static final String ALPHABET = "abcdefghijklmnopqrstuvxyz";
 
+    public static final String EPSILON = "&";
+
     //Number from which non-constant states start
     public static final int START_STATE_NUMBER = 100;
 

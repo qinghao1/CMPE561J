@@ -20,13 +20,17 @@ public class FSTBuilder {
         StartStateHelper.makeFile("start_states_FST.txt", trieMap);
         fstInputList.add("start_states_FST.txt");
 
-//        fstInputList.add("");
+        fstInputList.add("fst1.txt");
 
         //Make FST!
         FST fst = FST.buildFST(fstInputList);
 
         //Test
-        System.out.println(fst.feed("alphabetN"));
+        System.out.println(fst.feed("alphabetNZ"));
+        System.out.println(fst.feed("factorNZ"));
+        System.out.println(fst.feed("materialNP"));
+        System.out.println(fst.feed("materialNZA"));
+        System.out.println(fst.feed("materialNZAP"));
 
     }
 }

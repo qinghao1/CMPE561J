@@ -38,12 +38,17 @@ public class FST implements FSTConstants {
             char c = s.charAt(i);
             Pair<String, Integer> currentStateTransition = currentState.transitions.get(c);
             String transitionOutput = currentStateTransition.getKey();
-            //If output is -X, where X is a number, we remove the previous X characters
-            if (transitionOutput.matches("^-\\d+$")) {
-                int numberToRemove = Integer.parseInt(transitionOutput.substring(1));
-                output.delete(output.length() - numberToRemove, output.length());
+            //"&" represents Epsilon i.e. no output
+            if (transitionOutput.equals(EPSILON)) {
+                //Don't output anything
             } else {
-                output.append(currentStateTransition.getKey());
+                //If output is -X, where X is a number, we remove the previous X characters
+                if (transitionOutput.matches("^-\\d+$")) {
+                    int numberToRemove = Integer.parseInt(transitionOutput.substring(1));
+                    output.delete(output.length() - numberToRemove, output.length());
+                } else {
+                    output.append(transitionOutput);
+                }
             }
             currentState = stateList.get(currentStateTransition.getValue());
         }
@@ -52,7 +57,7 @@ public class FST implements FSTConstants {
     }
 
     public static FST buildFST(ArrayList<String> fileNames) {
-        String inputLineRegex = "^([\\d]+)\\s+([\\d]+)\\s+(.)\\s+(.)+$";
+        String inputLineRegex = "^([\\d]+)\\s+([\\d]+)\\s+(.)\\s+(.+)$";
         Pattern inputPattern = Pattern.compile(inputLineRegex);
 
         String commentRegex = "^#";

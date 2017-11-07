@@ -71,7 +71,7 @@ public class RegularNounHelper implements FSTConstants{
                     s.append(FILE_WHITESPACE_SEPARATOR);
                     s.append(REGULAR_NOUN_POS); //Input
                     s.append(FILE_WHITESPACE_SEPARATOR);
-                    s.append('\0'); //Output
+                    s.append(EPSILON); //No output
                     s.append('\n');
 
                     bw.write(s.toString());
