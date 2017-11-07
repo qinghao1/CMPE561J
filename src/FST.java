@@ -8,40 +8,51 @@ import java.util.HashMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class FST {
+public class FST implements FSTConstants {
     class State {
-        int state_number;
-        HashMap<Character, Pair<Character, Integer>> transitions;
+        int stateNumber;
+        HashMap<Character, Pair<String, Integer>> transitions = new HashMap<>();
 
-        State(int _state_number) {
-            state_number = _state_number;
+        State(int _stateNumber) {
+            stateNumber = _stateNumber;
         }
 
-        void add_transition(char i, char o, int nxt) {
+        void addTransition(char i, String o, int nxt) {
             transitions.put(i, new Pair(o, nxt));
         }
     }
 
     HashMap<Integer, State>stateList = new HashMap<>();
 
-    void add_arc(int _state1, int _state2, char i, char o) {
-        State state1 = stateList.containsKey(_state1) ? stateList.get(_state1) : stateList.put(_state1, new State(_state1));
-        State state2 = stateList.containsKey(_state2) ? stateList.get(_state2) : stateList.put(_state2, new State(_state2));
-        state1.add_transition(i, o, _state2);
+    void addArc(int _state1, int _state2, char i, String o) {
+        if (!stateList.containsKey(_state1)) stateList.put(_state1, new State(_state1));
+        if (!stateList.containsKey(_state2)) stateList.put(_state2, new State(_state2));
+        stateList.get(_state1).addTransition(i, o, _state2);
     }
 
-    void feed(String s) {
-        State current_state = stateList.get(0);
+    String feed(String s) {
+        StringBuilder output = new StringBuilder();
+
+        State currentState = stateList.get(FST.START_STATE_NUM);
         for (int i = 0; i < s.length(); i++){
             char c = s.charAt(i);
-            Pair<Character, Integer> current_state_transition = current_state.transitions.get(c);
-            System.out.println(current_state_transition.getKey());
-            current_state = stateList.get(current_state_transition.getValue());
+            Pair<String, Integer> currentStateTransition = currentState.transitions.get(c);
+            String transitionOutput = currentStateTransition.getKey();
+            //If output is -X, where X is a number, we remove the previous X characters
+            if (transitionOutput.matches("^-\\d+$")) {
+                int numberToRemove = Integer.parseInt(transitionOutput.substring(1));
+                output.delete(output.length() - numberToRemove, output.length());
+            } else {
+                output.append(currentStateTransition.getKey());
+            }
+            currentState = stateList.get(currentStateTransition.getValue());
         }
+
+        return output.toString();
     }
 
     public static FST buildFST(ArrayList<String> fileNames) {
-        String inputLineRegex = "^([\\d]+)\\s+([\\d]+)\\s+(.)\\s+(.)$";
+        String inputLineRegex = "^([\\d]+)\\s+([\\d]+)\\s+(.)\\s+(.)+$";
         Pattern inputPattern = Pattern.compile(inputLineRegex);
 
         String commentRegex = "^#";
@@ -61,9 +72,9 @@ public class FST {
                     int state1 = Integer.parseInt(inputMatcher.group(1));
                     int state2 = Integer.parseInt(inputMatcher.group(2));
                     char inputChar = inputMatcher.group(3).charAt(0);
-                    char outputChar = inputMatcher.group(4).charAt(0);
+                    String outputString = inputMatcher.group(4);
 
-                    fst.add_arc(state1, state2, inputChar, outputChar);
+                    fst.addArc(state1, state2, inputChar, outputString);
                 }
             } catch (FileNotFoundException e) {
                 System.out.println("Error: No file found: " + fileName);

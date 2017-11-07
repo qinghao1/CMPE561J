@@ -7,7 +7,7 @@ import java.util.Queue;
 //FSTTrieHelper.build(ArrayList<String> sequenceList) returns a HashMap<String, Integer> of sequence to state_ID
 public class FSTTrieHelper {
     static int START_STATE_NUMBER = 100;
-    static char ROOT_CHAR = (char) 0;
+    static char ROOT_CHAR = '\0'; //Doesn't matter what this value is
 
     static class TreeNode {
         HashMap<Character, TreeNode> childNodes;
@@ -32,10 +32,9 @@ public class FSTTrieHelper {
 
         String printPath() {
             StringBuilder s = new StringBuilder();
-            s.append(nodeChar);
-            TreeNode currentNode = parentNode;
-            while(currentNode != null) {
-                s.append(parentNode.nodeChar);
+            TreeNode currentNode = this;
+            while(currentNode.parentNode != null) {
+                s.insert(0, currentNode.nodeChar);
                 currentNode = currentNode.parentNode;
             }
             return s.toString();
@@ -63,10 +62,11 @@ public class FSTTrieHelper {
 
         while(!BFS.isEmpty()) {
             TreeNode currentNode = BFS.remove();
-            stateIDMapping.put(currentNode.printPath(), stateIDCounter++);
             for (TreeNode child : currentNode.childNodes.values()) {
                 BFS.add(child);
             }
+
+            if (currentNode != root) stateIDMapping.put(currentNode.printPath(), stateIDCounter++);
         }
 
         return stateIDMapping;
