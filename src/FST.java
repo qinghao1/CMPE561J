@@ -70,17 +70,8 @@ public class FST {
             } catch (IOException e) {
                 System.out.println("Error while reading file: " + fileName);
             }
-
         }
 
         return fst;
-    }
-
-    public static void main(String[] args) {
-        FST f = new FST();
-        f.add_arc(0, 1, 'c', 'c');
-        f.add_arc(0, 1, 'a', 'u');
-        f.add_arc(0, 1, 't', 't');
-        f.feed("cat");
     }
 }
