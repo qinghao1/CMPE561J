@@ -5,8 +5,7 @@ import java.util.Queue;
 
 //Uses a trie data structure to generate a unique state_ID for every unique sequence of characters
 //FSTTrieHelper.build(ArrayList<String> sequenceList) returns a HashMap<String, Integer> of sequence to state_ID
-public class FSTTrieHelper {
-    static int START_STATE_NUMBER = 100;
+public class FSTTrieHelper implements FSTConstants {
     static char ROOT_CHAR = '\0'; //Doesn't matter what this value is
 
     static class TreeNode {

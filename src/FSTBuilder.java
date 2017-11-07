@@ -13,12 +13,14 @@ public class FSTBuilder {
         //Make String -> StateID Map with Trie
         HashMap<String, Integer> trieMap = FSTTrieHelper.build(sequenceList);
 
-        //Make all FST input files
+        //Make and add all FST input files
         RegularNounHelper.makeFile("i_nouns_FST.txt", trieMap);
         fstInputList.add("i_nouns_FST.txt");
 
         StartStateHelper.makeFile("start_states_FST.txt", trieMap);
         fstInputList.add("start_states_FST.txt");
+
+//        fstInputList.add("");
 
         //Make FST!
         FST fst = FST.buildFST(fstInputList);

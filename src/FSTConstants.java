@@ -8,6 +8,9 @@ public interface FSTConstants {
     public static final char MORPHEME_BOUNDARY = '^';
     public static final String ALPHABET = "abcdefghijklmnopqrstuvxyz";
 
+    //Number from which non-constant states start
+    public static final int START_STATE_NUMBER = 100;
+
     //Used to delimit FST input text file
     public static final char FILE_WHITESPACE_SEPARATOR = '\t';
 }

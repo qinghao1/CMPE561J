@@ -8,7 +8,6 @@ import java.util.HashMap;
  * Run FSTTrieHelper.build() after adding all word classes to arrayList before running makeFile!
  */
 public class RegularNounHelper implements FSTConstants{
-
     //List of lists (each list is a list of transitions (C, CA, CAT; D, DO, DOG; etc.)
     static ArrayList<ArrayList<String>> transitionListList = new ArrayList<>();
 
