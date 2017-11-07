@@ -7,13 +7,7 @@ import java.util.HashMap;
  * 2) makeFile writes the relevant FST arcs to a text file
  * Run FSTTrieHelper.build() after adding all word classes to arrayList before running makeFile!
  */
-public class RegularNounHelper {
-    //Regular noun "end" state number in FST. Important!
-    final static int REGULAR_NOUN_END_STATE_NUM = 1;
-
-    //Used to delimit FST input text file
-    final static char FILE_WHITESPACE_SEPARATOR = '\t';
-
+public class RegularNounHelper implements FSTConstants{
     //List of lists (each list is a list of transitions (C, CA, CAT; D, DO, DOG; etc.)
     static ArrayList<ArrayList<String>> transitionListList = new ArrayList<>();
 
@@ -26,6 +20,8 @@ public class RegularNounHelper {
                 currentList.add(transition);
             }
         }
+
+        hasRunAddToArrayList = true;
     }
 
     public static void makeFile(String outputFileName, HashMap<String, Integer> trieMap) {
@@ -47,30 +43,35 @@ public class RegularNounHelper {
                     String state1 = null;
                     StringBuilder s = new StringBuilder();
 
-                    for (String state2 : transitionList) {
-                        if (state1 == null) continue;
-                        s.append(trieMap.get(state1)); //State1 ID
-                        s.append(FILE_WHITESPACE_SEPARATOR);
-                        s.append(trieMap.get(state2)); //State2 ID
-                        s.append(FILE_WHITESPACE_SEPARATOR);
-                        //For regular nouns, input == output == last character
-                        char inputOutputChar = state2.charAt(state2.length() - 1);
-                        s.append(inputOutputChar);
-                        s.append(FILE_WHITESPACE_SEPARATOR);
-                        s.append(inputOutputChar);
-                        s.append('\n');
+                    boolean hasSetState1 = false;
 
-                        state1 = state2;
+                    for (String state2 : transitionList) {
+                        if (!hasSetState1) {
+                            state1 = state2;
+                            hasSetState1 = true;
+                        } else {
+                            s.append(trieMap.get(state1)); //State1 ID
+                            s.append(FILE_WHITESPACE_SEPARATOR);
+                            s.append(trieMap.get(state2)); //State2 ID
+                            s.append(FILE_WHITESPACE_SEPARATOR);
+                            //For regular nouns, input == output == last character
+                            char inputOutputChar = state2.charAt(state2.length() - 1);
+                            s.append(inputOutputChar);
+                            s.append(FILE_WHITESPACE_SEPARATOR);
+                            s.append(inputOutputChar);
+                            s.append('\n');
+
+                            state1 = state2;
+                        }
                     }
                     //Write end state
                     s.append(trieMap.get(state1)); //Final string ID
                     s.append(FILE_WHITESPACE_SEPARATOR);
                     s.append(REGULAR_NOUN_END_STATE_NUM); //End state ID
                     s.append(FILE_WHITESPACE_SEPARATOR);
-                    char inputOutputChar = state1.charAt(state1.length() - 1);
-                    s.append(inputOutputChar);
+                    s.append(REGULAR_NOUN_POS); //Input
                     s.append(FILE_WHITESPACE_SEPARATOR);
-                    s.append(inputOutputChar);
+                    s.append('\0'); //Output
                     s.append('\n');
 
                     bw.write(s.toString());
@@ -93,6 +94,7 @@ public class RegularNounHelper {
             BufferedReader br = new BufferedReader(new FileReader(fileName));
             String currentLine;
             while ((currentLine = br.readLine()) != null) {
+                if (currentLine == null) continue;
                 ArrayList<String> transitionList = new ArrayList<>();
                 for(int i = 1; i <= currentLine.length(); i++) {
                     transitionList.add(currentLine.substring(0, i));
