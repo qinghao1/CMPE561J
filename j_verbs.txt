@@ -12,3 +12,4 @@ possess
 operate
 prevent
 renovate
+panic

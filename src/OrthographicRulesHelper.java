@@ -32,7 +32,7 @@ public class OrthographicRulesHelper implements FSTConstants {
             //Read from input file
             LineNumberReader br = new LineNumberReader(new FileReader(filename));
             String currentLine;
-            String othersRegex = "^##(\\d+)\\s+(\\d+)\\s+(OTHER)\\s+(OTHER|.+)$";
+            String othersRegex = "^##(\\d+)\\s+(\\d+)\\s+(OTHER)\\s+([^OTHER]*)(OTHER|.+)$";
             Pattern othersPattern = Pattern.compile(othersRegex);
             ArrayList<String> stringsArrayList = new ArrayList<>();
 
@@ -45,7 +45,8 @@ public class OrthographicRulesHelper implements FSTConstants {
                 othersMatcher.find();
                 String startState = othersMatcher.group(1);
                 String endState = othersMatcher.group(2);
-                String output = othersMatcher.group(4);
+                String optionalCharacters = othersMatcher.group(4);
+                String output = othersMatcher.group(5);
 
                 //Construct regex for previous line with same start and end state
                 String previousLineRegex = "^" + startState + "\\s+\\d+\\s+(.)\\s+.+";
@@ -74,7 +75,7 @@ public class OrthographicRulesHelper implements FSTConstants {
                     s.append(FILE_WHITESPACE_SEPARATOR);
                     s.append(currentChar);
                     s.append(FILE_WHITESPACE_SEPARATOR);
-                    s.append(inputSameAsOutput ? currentChar : output);
+                    s.append(optionalCharacters + (inputSameAsOutput ? currentChar : output));
                     s.append('\n');
                 }
             }

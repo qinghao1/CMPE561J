@@ -77,8 +77,19 @@ public class FSTBuilder implements FSTConstants {
         yReplacementInputFiles.add(yReplacementOthersFileName);
         FST yReplacementOthersFileNameFST = FST.buildFST(yReplacementInputFiles, Y_REP_FST_START_STATE_NUM);
 
+        //Reverse orthographic FSTs
+
+        //Reverse E insertion
+        ArrayList<String> revEInsertionInputFiles = new ArrayList<>();
+        String revEInsertionRuleFile = "rev_s_insertion.txt";
+        String revEInsertionOthersFileName = OrthographicRulesHelper.modifyFile(revEInsertionRuleFile);
+        revEInsertionInputFiles.add(revEInsertionRuleFile);
+        revEInsertionInputFiles.add(revEInsertionOthersFileName);
+        FST revEInsertionOthersFileNameFST = FST.buildFST(revEInsertionInputFiles, 80);
+
         //Test
-        System.out.println(chainFST("blissNP", mainFST, kInsertionFST, yReplacementOthersFileNameFST, eInsertionFST));
+        System.out.println(chainFST("stac", revEInsertionOthersFileNameFST));
+//        System.out.println(chainFST("blissNP", mainFST, kInsertionFST, yReplacementOthersFileNameFST, eInsertionFST));
 //        System.out.println(fst.feed("factorNZ"));
 //        System.out.println(fst.feed("materialNP"));
 //        System.out.println(fst.feed("materialNZA"));

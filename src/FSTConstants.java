@@ -21,7 +21,7 @@ public interface FSTConstants {
     public static final char OUS_ADJ_POS = 'M';
 
     //Alphabet
-    public static final String ALPHABET = "abcdefghijklmnopqrstuvxyz";
+    public static final String ALPHABET = "abcdefghijklmnopqrstuvwxyz";
 
     //Symbols
     public static final String EPSILON = "&";
