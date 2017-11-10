@@ -7,24 +7,23 @@ import java.util.HashMap;
  * 2) makeFile writes the relevant FST arcs to a text file
  * Run FSTTrieHelper.build() after adding all word classes to arrayList before running makeFile!
  */
-public class RegularNounHelper implements FSTConstants{
+public class WordHelper implements FSTConstants{
     //List of lists (each list is a list of transitions (C, CA, CAT; D, DO, DOG; etc.)
-    static ArrayList<ArrayList<String>> transitionListList = new ArrayList<>();
+    ArrayList<ArrayList<String>> transitionListList = new ArrayList<>();
 
-    static boolean hasRunAddToArrayList = false;
+    boolean hasRunAddToArrayList = false;
 
-    public static void addToArrayList(ArrayList<String> currentList, String fileName) {
+    public void addToArrayList(ArrayList<String> currentList, String fileName) {
         buildTransitionListList(fileName);
         for (ArrayList<String> transitionList : transitionListList) {
-            for (String transition : transitionList) {
-                currentList.add(transition);
-            }
+            //Only add the whole words
+            currentList.add(transitionList.get(transitionList.size() - 1));
         }
 
         hasRunAddToArrayList = true;
     }
 
-    public static void makeFile(String outputFileName, HashMap<String, Integer> trieMap) {
+    public void makeFile(String outputFileName, HashMap<String, Integer> trieMap, int END_STATE_NUM, char END_STATE_POS) {
         if (!hasRunAddToArrayList) {
             System.out.println("Run addToArrayList() first before calling makeFile()");
         } else {
@@ -38,10 +37,10 @@ public class RegularNounHelper implements FSTConstants{
 
                 FileWriter fw = new FileWriter(file);
                 bw = new BufferedWriter(fw);
+                StringBuilder s = new StringBuilder();
 
                 for (ArrayList<String> transitionList : transitionListList) {
                     String state1 = null;
-                    StringBuilder s = new StringBuilder();
 
                     boolean hasSetState1 = false;
 
@@ -67,15 +66,15 @@ public class RegularNounHelper implements FSTConstants{
                     //Write end state
                     s.append(trieMap.get(state1)); //Final string ID
                     s.append(FILE_WHITESPACE_SEPARATOR);
-                    s.append(REGULAR_NOUN_END_STATE_NUM); //End state ID
+                    s.append(END_STATE_NUM); //End state ID
                     s.append(FILE_WHITESPACE_SEPARATOR);
-                    s.append(REGULAR_NOUN_POS); //Input
+                    s.append(END_STATE_POS); //Input
                     s.append(FILE_WHITESPACE_SEPARATOR);
                     s.append(EPSILON); //No output
                     s.append('\n');
 
-                    bw.write(s.toString());
                 }
+                bw.write(s.toString());
 
             } catch (IOException ioe) {
                 ioe.printStackTrace();
@@ -89,7 +88,7 @@ public class RegularNounHelper implements FSTConstants{
         }
     }
 
-    private static void buildTransitionListList(String fileName) {
+    private void buildTransitionListList(String fileName) {
         try {
             BufferedReader br = new BufferedReader(new FileReader(fileName));
             String currentLine;

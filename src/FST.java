@@ -22,21 +22,27 @@ public class FST implements FSTConstants {
         }
     }
 
-    HashMap<Integer, State>stateList = new HashMap<>();
-
     void addArc(int _state1, int _state2, char i, String o) {
         if (!stateList.containsKey(_state1)) stateList.put(_state1, new State(_state1));
         if (!stateList.containsKey(_state2)) stateList.put(_state2, new State(_state2));
         stateList.get(_state1).addTransition(i, o, _state2);
     }
 
+    int START_STATE_NUM;
+    HashMap<Integer, State>stateList = new HashMap<>();
+
+    FST(int _START_STATE_NUM) {
+        START_STATE_NUM = _START_STATE_NUM;
+    }
+
     String feed(String s) {
         StringBuilder output = new StringBuilder();
 
-        State currentState = stateList.get(FST.START_STATE_NUM);
-        for (int i = 0; i < s.length(); i++){
+        State currentState = stateList.get(START_STATE_NUM);
+        for (int i = 0; i < s.length(); i++) {
             char c = s.charAt(i);
             Pair<String, Integer> currentStateTransition = currentState.transitions.get(c);
+            if (currentStateTransition == null) return WRONG_INPUT_MESSAGE;
             String transitionOutput = currentStateTransition.getKey();
             //"&" represents Epsilon i.e. no output
             if (transitionOutput.equals(EPSILON)) {
@@ -56,13 +62,13 @@ public class FST implements FSTConstants {
         return output.toString();
     }
 
-    public static FST buildFST(ArrayList<String> fileNames) {
+    public static FST buildFST(ArrayList<String> fileNames, int _START_STATE_NUM) {
         String inputLineRegex = "^([\\d]+)\\s+([\\d]+)\\s+(.)\\s+(.+)$";
         Pattern inputPattern = Pattern.compile(inputLineRegex);
 
-        String commentRegex = "^#";
+        String commentRegex = "^#.+";
 
-        FST fst = new FST();
+        FST fst = new FST(_START_STATE_NUM);
         for (String fileName : fileNames) {
             try {
                 BufferedReader br = new BufferedReader(new FileReader(fileName));
@@ -70,6 +76,13 @@ public class FST implements FSTConstants {
                 while ((currentLine = br.readLine()) != null) {
                     //Skip if comment line
                     if (currentLine.matches(commentRegex)) continue;
+
+                    //Skip if not valid input (Prints warning)
+                    if (!currentLine.matches(inputLineRegex)) {
+                        System.out.println("WARNING: Following line is not valid FST input");
+                        System.out.println(currentLine);
+                        continue;
+                    }
 
                     Matcher inputMatcher = inputPattern.matcher(currentLine);
                     inputMatcher.find();

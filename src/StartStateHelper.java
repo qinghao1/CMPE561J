@@ -23,7 +23,7 @@ public class StartStateHelper implements FSTConstants {
                 if (!trieMap.containsKey(Character.toString(ALPHABET.charAt(i)))) {
                     continue;
                 } else {
-                    s.append(START_STATE_NUM); //Start state
+                    s.append(MAIN_FST_START_STATE_NUM); //Start state
                     s.append(FILE_WHITESPACE_SEPARATOR);
                     s.append(trieMap.get(Character.toString(ALPHABET.charAt(i)))); //Single-letter state
                     s.append(FILE_WHITESPACE_SEPARATOR);
