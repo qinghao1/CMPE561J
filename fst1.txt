@@ -1,6 +1,4 @@
 1 2 Z ^ize
-2 3 & ^
-3 4 & i
 2 3 A ^ation
 2 4 R ^er
 5 6 Y ^ity
