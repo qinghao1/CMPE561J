@@ -24,8 +24,12 @@ public class FSTBuilder implements FSTConstants {
         jVerbHelper.addToArrayList(sequenceList, "j_verbs.txt");
         WordHelper kVerbHelper = new WordHelper();
         kVerbHelper.addToArrayList(sequenceList, "k_verbs.txt");
+        WordHelper regularVerbHelper = new WordHelper();
+        regularVerbHelper.addToArrayList(sequenceList, "regular_verbs.txt");
         WordHelper ousAdjHelper = new WordHelper();
         ousAdjHelper.addToArrayList(sequenceList, "ous_adjectives.txt");
+        WordHelper alAdjHelper = new WordHelper();
+        alAdjHelper.addToArrayList(sequenceList, "al_adjectives.txt");
 
         //Make String -> StateID Map with Trie
         HashMap<String, Integer> trieMap = FSTTrieHelper.build(sequenceList);
@@ -39,8 +43,13 @@ public class FSTBuilder implements FSTConstants {
         fstInputList.add("j_verbs_FST.txt");
         kVerbHelper.makeFile("k_verbs_FST.txt", trieMap, K_VERB_END_STATE_NUM, K_VERB_POS);
         fstInputList.add("k_verbs_FST.txt");
+        regularVerbHelper.makeFile("regular_verbs_FST.txt", trieMap, REGULAR_VERB_END_STATE_NUM, REGULAR_VERB_POS);
+        fstInputList.add("regular_verbs_FST.txt");
         ousAdjHelper.makeFile("ous_adjectives_FST.txt", trieMap, OUS_ADJ_END_STATE_NUM, OUS_ADJ_POS);
         fstInputList.add("ous_adjectives_FST.txt");
+        alAdjHelper.makeFile("al_adjectives_FST.txt", trieMap, AL_ADJ_END_STATE_NUM, AL_ADJ_POS);
+        fstInputList.add("al_adjectives_FST.txt");
+
 
         StartStateHelper.makeFile("start_states_FST.txt", trieMap);
         fstInputList.add("start_states_FST.txt");
@@ -51,7 +60,6 @@ public class FSTBuilder implements FSTConstants {
         FST mainFST = FST.buildFST(fstInputList, MAIN_FST_START_STATE_NUM);
 
         //Make orthographic FSTs
-//        ArrayList<FST> orthographicFSTs = new ArrayList<>();
 
         //E-insertion FST
         ArrayList<String> eInsertionInputFiles = new ArrayList<>();
@@ -75,7 +83,8 @@ public class FSTBuilder implements FSTConstants {
         String yReplacementOthersFileName = OrthographicRulesHelper.modifyFile(yReplacementRuleFile);
         yReplacementInputFiles.add(yReplacementRuleFile);
         yReplacementInputFiles.add(yReplacementOthersFileName);
-        FST yReplacementOthersFileNameFST = FST.buildFST(yReplacementInputFiles, Y_REP_FST_START_STATE_NUM);
+        FST yReplacementFST = FST.buildFST(yReplacementInputFiles, Y_REP_FST_START_STATE_NUM);
+
 
         //Reverse orthographic FSTs
 
@@ -85,7 +94,7 @@ public class FSTBuilder implements FSTConstants {
         String revEInsertionOthersFileName = OrthographicRulesHelper.modifyFile(revEInsertionRuleFile);
         revEInsertionInputFiles.add(revEInsertionRuleFile);
         revEInsertionInputFiles.add(revEInsertionOthersFileName);
-        FST revEInsertionOthersFileNameFST = FST.buildFST(revEInsertionInputFiles, 80);
+        FST revEInsertionFST = FST.buildFST(revEInsertionInputFiles, REV_E_INS_FST_START_STATE_NUM);
 
         //Reverse y-replacement
         ArrayList<String> revYReplacementInputFiles = new ArrayList<>();
@@ -93,7 +102,7 @@ public class FSTBuilder implements FSTConstants {
         String revYReplacementOthersFileName = OrthographicRulesHelper.modifyFile(revYReplacementRuleFile);
         revYReplacementInputFiles.add(revYReplacementRuleFile);
         revYReplacementInputFiles.add(revYReplacementOthersFileName);
-        FST revYReplacementOthersFileNameFST = FST.buildFST(revYReplacementInputFiles,100);
+        FST revYReplacementFST = FST.buildFST(revYReplacementInputFiles, REV_Y_REP_FST_START_STATE_NUM);
         
         //Reverse k-insertion
         ArrayList<String> revKInsertionInputFiles = new ArrayList<>();
@@ -101,7 +110,7 @@ public class FSTBuilder implements FSTConstants {
         String revKInsertionOthersFileName = OrthographicRulesHelper.modifyFile(revKInsertionRuleFile);
         revKInsertionInputFiles.add(revKInsertionRuleFile);
         revKInsertionInputFiles.add(revKInsertionOthersFileName);
-        FST revKInsertionOthersFileNameFST = FST.buildFST(revKInsertionInputFiles,90);
+        FST revKInsertionFST = FST.buildFST(revKInsertionInputFiles, REV_K_INS_FST_START_STATE_NUM);
         
         //General reversed suffixes
         ArrayList<String> revSuffixesInputFiles = new ArrayList<>();
@@ -109,15 +118,11 @@ public class FSTBuilder implements FSTConstants {
         String revSuffixesOthersFileName = OrthographicRulesHelper.modifyFile(revSuffixesRuleFile);
         revSuffixesInputFiles.add(revSuffixesRuleFile);
         revSuffixesInputFiles.add(revSuffixesOthersFileName);
-        FST revSuffixesOthersFileNameFST = FST.buildFST(revSuffixesInputFiles,50);
+        FST revSuffixesFST = FST.buildFST(revSuffixesInputFiles, REV_SUFFIX_FST_START_STATE_NUM);
         
         //Test
-        System.out.println(chainFST("snoitaeziretupmoc", revKInsertionOthersFileNameFST, revYReplacementOthersFileNameFST, revEInsertionOthersFileNameFST, revSuffixesOthersFileNameFST));
-//        System.out.println(chainFST("blissNP", mainFST, kInsertionFST, yReplacementOthersFileNameFST, eInsertionFST));
-//        System.out.println(fst.feed("factorNZ"));
-//        System.out.println(fst.feed("materialNP"));
-//        System.out.println(fst.feed("materialNZA"));
-//        System.out.println(fst.feed("materialNZAP"));
+        System.out.println(chainFST("snoitaeziretupmoc", revKInsertionFST, revYReplacementFST, revEInsertionFST, revSuffixesFST));
+//        System.out.println(chainFST("blissNP", mainFST, kInsertionFST, yReplacementFST, eInsertionFST));
 
     }
 }

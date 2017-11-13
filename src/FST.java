@@ -5,6 +5,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -15,6 +16,16 @@ public class FST implements FSTConstants {
 
         State(int _stateNumber) {
             stateNumber = _stateNumber;
+        }
+
+        @Override
+        //Needed to implement HashMap
+        public int hashCode() {return stateNumber;}
+        public boolean equals(Object other) {
+            if (other == this) return true;
+            if (!(other instanceof  State)) return false;
+            State otherState = (State) other;
+            return this.stateNumber == otherState.stateNumber;
         }
 
         void addTransition(char i, String o, int nxt) {
@@ -36,30 +47,67 @@ public class FST implements FSTConstants {
     }
 
     String feed(String s) {
-        StringBuilder output = new StringBuilder();
-
         State currentState = stateList.get(START_STATE_NUM);
+
+        //Keep a map of current states to their outputs. Add to this set when we see epsilon-transitions, and remove them
+        //when we encounter a transition that does not apply to that state
+        HashMap<State, String> stateSet = new HashMap<>();
+        stateSet.put(currentState, "");
+
         for (int i = 0; i < s.length(); i++) {
             char c = s.charAt(i);
-            Pair<String, Integer> currentStateTransition = currentState.transitions.get(c);
-            if (currentStateTransition == null) return WRONG_INPUT_MESSAGE;
-            String transitionOutput = currentStateTransition.getKey();
-            //"&" represents Epsilon i.e. no output
-            if (transitionOutput.equals(EPSILON)) {
-                //Don't output anything
-            } else {
-                //If output is -X, where X is a number, we remove the previous X characters
-                if (transitionOutput.matches("^-\\d+$")) {
-                    int numberToRemove = Integer.parseInt(transitionOutput.substring(1));
-                    output.delete(output.length() - numberToRemove, output.length());
+
+            for (State possibleState : stateSet.keySet()) {
+                Pair<String, Integer> transition = possibleState.transitions.get(c);
+                if (transition == null) {
+                    //Remove from set, do nothing
                 } else {
-                    output.append(transitionOutput);
+                    State newState = stateList.get(transition.getValue());
+                    String possibleStateOutput = stateSet.get(possibleState);
+                    String newOutput = possibleStateOutput;
+
+                    String transitionOutput = transition.getKey();
+                    if (transitionOutput.equals(EPSILON)) {
+                        //Don't append anything to current output
+                    } else {
+                        newOutput = possibleStateOutput + transitionOutput;
+                    }
+                    stateSet.put(newState, newOutput);
+                }
+                stateSet.remove(possibleState);
+            }
+
+            //Add all possible epsilon transitions
+            for (State possibleState : stateSet.keySet()) {
+                Pair<String, Integer> epsTransition = possibleState.transitions.get(EPSILON);
+                if (epsTransition == null) {
+                    //No epsilon transition
+                } else {
+                    State newState = stateList.get(epsTransition.getValue());
+                    String possibleStateOutput = stateSet.get(possibleState);
+                    String newOutput = possibleStateOutput;
+
+                    String transitionOutput = epsTransition.getKey();
+                    if (transitionOutput.equals(EPSILON)) {
+                        //Don't append anything to current output
+                        //This should technically only happen for final state
+                    } else {
+                        newOutput = possibleStateOutput + transitionOutput;
+                    }
+                    stateSet.put(newState, newOutput);
                 }
             }
-            currentState = stateList.get(currentStateTransition.getValue());
+
+            //If no states remaining in set of possible sets, input is invalid
+            if (stateSet.isEmpty()) return WRONG_INPUT_MESSAGE;
         }
 
-        return output.toString();
+        //There should only be one final state in set
+        for (State possibleState : stateSet.keySet()) {
+            if (possibleState.stateNumber == FINAL_STATE_NUMBER) return stateSet.get(possibleState);
+        }
+
+        return WRONG_INPUT_MESSAGE;
     }
 
     public static FST buildFST(ArrayList<String> fileNames, int _START_STATE_NUM) {

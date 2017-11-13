@@ -74,6 +74,16 @@ public class WordHelper implements FSTConstants{
                     s.append('\n');
 
                 }
+
+                //Write final state transition
+                s.append(END_STATE_NUM +
+                        FILE_WHITESPACE_SEPARATOR +
+                        FINAL_STATE_NUMBER +
+                        FILE_WHITESPACE_SEPARATOR +
+                        EPSILON +
+                        FILE_WHITESPACE_SEPARATOR +
+                        EPSILON + '\n');
+
                 bw.write(s.toString());
 
             } catch (IOException ioe) {
