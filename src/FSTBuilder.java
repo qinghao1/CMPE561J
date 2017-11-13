@@ -87,8 +87,32 @@ public class FSTBuilder implements FSTConstants {
         revEInsertionInputFiles.add(revEInsertionOthersFileName);
         FST revEInsertionOthersFileNameFST = FST.buildFST(revEInsertionInputFiles, 80);
 
+        //Reverse y-replacement
+        ArrayList<String> revYReplacementInputFiles = new ArrayList<>();
+        String revYReplacementRuleFile = "rev_y_replacement.txt";
+        String revYReplacementOthersFileName = OrthographicRulesHelper.modifyFile(revYReplacementRuleFile);
+        revYReplacementInputFiles.add(revYReplacementRuleFile);
+        revYReplacementInputFiles.add(revYReplacementOthersFileName);
+        FST revYReplacementOthersFileNameFST = FST.buildFST(revYReplacementInputFiles,100);
+        
+        //Reverse k-insertion
+        ArrayList<String> revKInsertionInputFiles = new ArrayList<>();
+        String revKInsertionRuleFile = "rev_k_insertion.txt";
+        String revKInsertionOthersFileName = OrthographicRulesHelper.modifyFile(revKInsertionRuleFile);
+        revKInsertionInputFiles.add(revKInsertionRuleFile);
+        revKInsertionInputFiles.add(revKInsertionOthersFileName);
+        FST revKInsertionOthersFileNameFST = FST.buildFST(revKInsertionInputFiles,90);
+        
+        //General reversed suffixes
+        ArrayList<String> revSuffixesInputFiles = new ArrayList<>();
+        String revSuffixesRuleFile = "rev_suffixes.txt";
+        String revSuffixesOthersFileName = OrthographicRulesHelper.modifyFile(revSuffixesRuleFile);
+        revSuffixesInputFiles.add(revSuffixesRuleFile);
+        revSuffixesInputFiles.add(revSuffixesOthersFileName);
+        FST revSuffixesOthersFileNameFST = FST.buildFST(revSuffixesInputFiles,50);
+        
         //Test
-        System.out.println(chainFST("stac", revEInsertionOthersFileNameFST));
+        System.out.println(chainFST("snoitaeziretupmoc", revKInsertionOthersFileNameFST, revYReplacementOthersFileNameFST, revEInsertionOthersFileNameFST, revSuffixesOthersFileNameFST));
 //        System.out.println(chainFST("blissNP", mainFST, kInsertionFST, yReplacementOthersFileNameFST, eInsertionFST));
 //        System.out.println(fst.feed("factorNZ"));
 //        System.out.println(fst.feed("materialNP"));
