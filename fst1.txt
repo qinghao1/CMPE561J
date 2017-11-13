@@ -2,7 +2,7 @@
 2 3 A ^ation
 2 4 R ^er
 5 6 Y ^ity
-2 5 A ^able
+2 5 B ^able
 5 6 S ^ness
 8 6 S ^ness
 7 8 V ^ive
@@ -34,6 +34,6 @@
 4 16 G &
 17 13 I ^ing
 17 14 E ^ed
-17 14 P ^ed
+17 14 X ^ed
 17 15 W ^s
 
