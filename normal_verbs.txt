@@ -1,0 +1,7 @@
+panic
+walk
+flee
+scream
+disappoint
+care
+dream

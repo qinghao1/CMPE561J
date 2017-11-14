@@ -1,5 +1,7 @@
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Scanner;
 
 public class FSTBuilder implements FSTConstants {
 
@@ -13,6 +15,28 @@ public class FSTBuilder implements FSTConstants {
     }
 
     public static void main(String[] args) {
+    	System.out.println("Surface level to lexical leve? (1)");
+    	System.out.println("Lexical level to surface level? (2)");
+    	int direction = 0;
+    	Scanner reader = new Scanner(System.in);  // Reading from System.in
+		System.out.println("Enter a number: ");
+		direction = reader.nextInt(); // Scans the next token of the input as an int.
+		//once finished
+		System.out.println("Enter your word: ");
+		reader = new Scanner(System.in);
+		String word = reader.nextLine();
+		
+		reader.close();
+    	/*
+		StringBuffer in = new StringBuffer();
+    	for (int i =0; i<args.length;i++){
+    		in.append(args[i]);
+    	}
+    	
+    	
+    	System.out.println(in.toString());
+    	*/
+    	
         //Initialize sequence list and list of FST input filenames
         ArrayList<String> sequenceList = new ArrayList<>();
         ArrayList<String> fstInputList = new ArrayList<>();
@@ -90,6 +114,13 @@ public class FSTBuilder implements FSTConstants {
         yReplacementInputFiles.add(yReplacementRuleFile);
         yReplacementInputFiles.add(yReplacementOthersFileName);
         FST yReplacementFST = FST.buildFST(yReplacementInputFiles, Y_REP_FST_START_STATE_NUM);
+        
+        ArrayList<String> carDeletionInputFiles = new ArrayList<>();
+        String carDeletionRuleFile = "cariot_deletion.txt";
+        String carDeletionOthersFileName = OrthographicRulesHelper.modifyFile(carDeletionRuleFile);
+        carDeletionInputFiles.add(carDeletionRuleFile);
+        carDeletionInputFiles.add(carDeletionOthersFileName);
+        FST carDeletionFST = FST.buildFST(carDeletionInputFiles, CAR_DEL_FST_START_STATE_NUM);
 
 
         //Reverse orthographic FSTs
@@ -127,14 +158,22 @@ public class FSTBuilder implements FSTConstants {
         FST revSuffixesFST = FST.buildFST(revSuffixesInputFiles, REV_SUFFIX_FST_START_STATE_NUM);
         
         //Test
-        String originalString = "acting";
-        String carettedString = chainFST((
-                new StringBuffer(originalString).reverse().toString()),
-                revKInsertionFST, revYReplacementFST, revEInsertionFST, revSuffixesFST);
-        System.out.println(carettedString);
-        System.out.println(chainFST((new StringBuffer(carettedString).reverse().toString()), mainReverseFST));
+        String originalString = word;
+        if (direction == 1) {
+        	String carettedString = chainFST((
+                    new StringBuffer(originalString).reverse().toString()),
+                    revKInsertionFST, revYReplacementFST, revEInsertionFST, revSuffixesFST);
+        	String res = chainFST((new StringBuffer(carettedString).reverse().toString()), mainReverseFST);
+        	System.out.println("Your word is " + res);
+        } else if (direction == 2) {
+        	String inter = chainFST(originalString, mainFST);
+        	String res = chainFST(inter,kInsertionFST, yReplacementFST, eInsertionFST, carDeletionFST);
+        	System.out.println("Your word is " + res);
+        }
+        
+//        System.out.println(chainFST((new StringBuffer(carettedString).reverse().toString()), mainReverseFST));
 //        System.out.println(chainFST("material^s", revKInsertionFST, revYReplacementFST, revEInsertionFST, mainReverseFST));
-//        System.out.println(chainFST("material^s", eInsertionFST, yReplacementFST, kInsertionFST));
+//        System.out.println(chainFST("fox^s", eInsertionFST, yReplacementFST, kInsertionFST, carDeletionFST));
 //        System.out.println(chainFST("tries", revYReplacementFST));
 //        System.out.println(chainFST("abuse^ing", mainReverseFST));
 
