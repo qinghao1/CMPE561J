@@ -88,7 +88,6 @@ public class FSTBuilder implements FSTConstants {
         yReplacementInputFiles.add(yReplacementRuleFile);
         yReplacementInputFiles.add(yReplacementOthersFileName);
         FST yReplacementFST = FST.buildFST(yReplacementInputFiles, Y_REP_FST_START_STATE_NUM);
-        FST revYReplacementFST = FST.buildReverseFST(yReplacementInputFiles, Y_REP_FST_START_STATE_NUM);
 
 
         //Reverse orthographic FSTs
@@ -101,13 +100,13 @@ public class FSTBuilder implements FSTConstants {
         revEInsertionInputFiles.add(revEInsertionOthersFileName);
         FST revEInsertionFST = FST.buildFST(revEInsertionInputFiles, REV_E_INS_FST_START_STATE_NUM);
 
-//        //Reverse y-replacement
-//        ArrayList<String> revYReplacementInputFiles = new ArrayList<>();
-//        String revYReplacementRuleFile = "rev_y_replacement.txt";
-//        String revYReplacementOthersFileName = OrthographicRulesHelper.modifyFile(revYReplacementRuleFile);
-//        revYReplacementInputFiles.add(revYReplacementRuleFile);
-//        revYReplacementInputFiles.add(revYReplacementOthersFileName);
-//        FST revYReplacementFST = FST.buildFST(revYReplacementInputFiles, REV_Y_REP_FST_START_STATE_NUM);
+        //Reverse y-replacement
+        ArrayList<String> revYReplacementInputFiles = new ArrayList<>();
+        String revYReplacementRuleFile = "rev_y_replacement.txt";
+        String revYReplacementOthersFileName = OrthographicRulesHelper.modifyFile(revYReplacementRuleFile);
+        revYReplacementInputFiles.add(revYReplacementRuleFile);
+        revYReplacementInputFiles.add(revYReplacementOthersFileName);
+        FST revYReplacementFST = FST.buildFST(revYReplacementInputFiles, REV_Y_REP_FST_START_STATE_NUM);
 //
         //Reverse k-insertion
         ArrayList<String> revKInsertionInputFiles = new ArrayList<>();
@@ -116,8 +115,8 @@ public class FSTBuilder implements FSTConstants {
         revKInsertionInputFiles.add(revKInsertionRuleFile);
         revKInsertionInputFiles.add(revKInsertionOthersFileName);
         FST revKInsertionFST = FST.buildFST(revKInsertionInputFiles, REV_K_INS_FST_START_STATE_NUM);
-        
-        //General reversed suffixes
+
+        //Reverse suffixes FST (^-insertion)
         ArrayList<String> revSuffixesInputFiles = new ArrayList<>();
         String revSuffixesRuleFile = "rev_suffixes.txt";
         String revSuffixesOthersFileName = OrthographicRulesHelper.modifyFile(revSuffixesRuleFile);
@@ -128,8 +127,9 @@ public class FSTBuilder implements FSTConstants {
         //Test
 //        String reversedString = chainFST("stac", revKInsertionFST, revYReplacementFST, revEInsertionFST, revSuffixesFST);
 //        System.out.println(reversedString);
-//        System.out.println(chainFST((new StringBuffer(reversedString).reverse().toString()), mainReverseFST));
-        System.out.println(chainFST("material^s", mainReverseFST));
+        System.out.println(chainFST((new StringBuffer("materials").reverse().toString()), revSuffixesFST));
+        System.out.println(chainFST("material^s", revKInsertionFST, revYReplacementFST, revEInsertionFST, mainReverseFST));
+        System.out.println(chainFST("material^s", eInsertionFST, yReplacementFST, kInsertionFST));
 //        System.out.println(chainFST("tries", revYReplacementFST));
 //        System.out.println(chainFST("bliss", mainReverseFST));
 
