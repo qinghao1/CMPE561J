@@ -158,7 +158,6 @@ public class FST implements FSTConstants {
         //take the first one
         for (State possibleState : stateSet.keySet()) {
             if (possibleState.stateNumber == FINAL_STATE_NUMBER) {
-//                System.out.println(stateSet.get(possibleState));
                 return stateSet.get(possibleState);
             }
         }

@@ -2,6 +2,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class FSTBuilder implements FSTConstants {
+
     public static String chainFST(String input, FST... fsts) {
         int i = 0;
         for (FST fst : fsts) {
@@ -61,6 +62,7 @@ public class FSTBuilder implements FSTConstants {
         FST mainFST = FST.buildFST(fstInputList, MAIN_FST_START_STATE_NUM);
 
         //Make inverted main FST
+        fstInputList.add("int_to_lex_reverse.txt");
         FST mainReverseFST = FST.buildReverseFST(fstInputList, MAIN_FST_START_STATE_NUM);
 
         //Make orthographic FSTs
@@ -125,13 +127,16 @@ public class FSTBuilder implements FSTConstants {
         FST revSuffixesFST = FST.buildFST(revSuffixesInputFiles, REV_SUFFIX_FST_START_STATE_NUM);
         
         //Test
-//        String reversedString = chainFST("stac", revKInsertionFST, revYReplacementFST, revEInsertionFST, revSuffixesFST);
-//        System.out.println(reversedString);
-        System.out.println(chainFST((new StringBuffer("materials").reverse().toString()), revSuffixesFST));
-        System.out.println(chainFST("material^s", revKInsertionFST, revYReplacementFST, revEInsertionFST, mainReverseFST));
-        System.out.println(chainFST("material^s", eInsertionFST, yReplacementFST, kInsertionFST));
+        String originalString = "alphabets";
+        String carettedString = chainFST((
+                new StringBuffer(originalString).reverse().toString()),
+                revKInsertionFST, revYReplacementFST, revEInsertionFST, revSuffixesFST);
+        System.out.println(carettedString);
+        System.out.println(chainFST((new StringBuffer(carettedString).reverse().toString()), mainReverseFST));
+//        System.out.println(chainFST("material^s", revKInsertionFST, revYReplacementFST, revEInsertionFST, mainReverseFST));
+//        System.out.println(chainFST("material^s", eInsertionFST, yReplacementFST, kInsertionFST));
 //        System.out.println(chainFST("tries", revYReplacementFST));
-//        System.out.println(chainFST("bliss", mainReverseFST));
+//        System.out.println(chainFST("abuse^ing", mainReverseFST));
 
     }
 }
