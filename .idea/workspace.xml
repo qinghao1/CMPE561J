@@ -2,19 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="15479358-5809-4156-9d7f-ae8fdb7aaf59" name="Default" comment="">
-      <change type="MOVED" beforePath="$PROJECT_DIR$/normal_verbs.txt" afterPath="$PROJECT_DIR$/regular_verbs.txt" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/FSTString.java" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/rev_k_insertion.txt" afterPath="$PROJECT_DIR$/rev_k_insertion.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/rev_s_insertion.txt" afterPath="$PROJECT_DIR$/rev_s_insertion.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/rev_suffixes.txt" afterPath="$PROJECT_DIR$/rev_suffixes.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/rev_y_replacement.txt" afterPath="$PROJECT_DIR$/rev_y_replacement.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/rule_e-insertion.txt" afterPath="$PROJECT_DIR$/rule_e-insertion.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/rule_k-insertion.txt" afterPath="$PROJECT_DIR$/rule_k-insertion.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/rule_y-replacement.txt" afterPath="$PROJECT_DIR$/rule_y-replacement.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/FST.java" afterPath="$PROJECT_DIR$/src/FST.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/FSTBuilder.java" afterPath="$PROJECT_DIR$/src/FSTBuilder.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/FSTConstants.java" afterPath="$PROJECT_DIR$/src/FSTConstants.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/WordHelper.java" afterPath="$PROJECT_DIR$/src/WordHelper.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -29,33 +18,9 @@
       <file leaf-file-name="FST.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/FST.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="79" column="50" lean-forward="true" selection-start-line="79" selection-start-column="50" selection-end-line="79" selection-end-column="50" />
+            <state relative-caret-position="1655">
+              <caret line="218" column="5" lean-forward="true" selection-start-line="218" selection-start-column="5" selection-end-line="218" selection-end-column="5" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SuffixHelper.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/SuffixHelper.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="15" column="33" lean-forward="true" selection-start-line="15" selection-start-column="33" selection-end-line="15" selection-end-column="33" />
-              <folding>
-                <marker date="1510331572656" expanded="true" signature="2:1476" ph="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="WordHelper.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/WordHelper.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="589">
-              <caret line="84" column="40" lean-forward="true" selection-start-line="84" selection-start-column="40" selection-end-line="84" selection-end-column="40" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -63,28 +28,28 @@
       <file leaf-file-name="OrthographicRulesHelper.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/OrthographicRulesHelper.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="68" column="66" lean-forward="true" selection-start-line="68" selection-start-column="66" selection-end-line="68" selection-end-column="66" />
+            <state relative-caret-position="90">
+              <caret line="11" column="13" lean-forward="false" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="start_states_FST.txt" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/start_states_FST.txt">
+      <file leaf-file-name="WordHelper.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/WordHelper.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="9" column="0" lean-forward="false" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+            <state relative-caret-position="15">
+              <caret line="20" column="9" lean-forward="true" selection-start-line="20" selection-start-column="9" selection-end-line="20" selection-end-column="9" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="rule_y-replacement.txt" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/rule_y-replacement.txt">
+      <file leaf-file-name="StartStateHelper.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/StartStateHelper.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="9" column="13" lean-forward="true" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+            <state relative-caret-position="180">
+              <caret line="16" column="0" lean-forward="true" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -93,28 +58,8 @@
       <file leaf-file-name="FSTBuilder.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/FSTBuilder.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1176">
-              <caret line="116" column="56" lean-forward="true" selection-start-line="116" selection-start-column="56" selection-end-line="116" selection-end-column="56" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="regular_verbs.txt" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/regular_verbs.txt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="FSTConstants.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/FSTConstants.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="649">
-              <caret line="50" column="55" lean-forward="false" selection-start-line="50" selection-start-column="49" selection-end-line="50" selection-end-column="55" />
+            <state relative-caret-position="1395">
+              <caret line="94" column="38" lean-forward="false" selection-start-line="94" selection-start-column="38" selection-end-line="94" selection-end-column="38" />
               <folding />
             </state>
           </provider>
@@ -155,9 +100,12 @@
       <find>pain</find>
       <find>267</find>
       <find>end_sta</find>
-      <find>println</find>
       <find>system.out.p</find>
       <find>system.out.print</find>
+      <find>succ</find>
+      <find>println</find>
+      <find>HELLO</find>
+      <find>toremove</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -172,7 +120,6 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/src/FSTTrieHelper.java" />
-        <option value="$PROJECT_DIR$/start_states_FST.txt" />
         <option value="$PROJECT_DIR$/TODO.txt" />
         <option value="$PROJECT_DIR$/rule_e-insertion_others.txt" />
         <option value="$PROJECT_DIR$/src/RegularNounHelper.java" />
@@ -182,18 +129,19 @@
         <option value="$PROJECT_DIR$/src/FSTString.java" />
         <option value="$PROJECT_DIR$/src/SuffixHelper.java" />
         <option value="$PROJECT_DIR$/src/OrthographicRulesHelper.java" />
-        <option value="$PROJECT_DIR$/fst1.txt" />
-        <option value="$PROJECT_DIR$/src/FSTBuilder.java" />
-        <option value="$PROJECT_DIR$/src/FSTConstants.java" />
-        <option value="$PROJECT_DIR$/src/WordHelper.java" />
-        <option value="$PROJECT_DIR$/src/FST.java" />
         <option value="$PROJECT_DIR$/rev_k_insertion.txt" />
         <option value="$PROJECT_DIR$/rev_s_insertion.txt" />
         <option value="$PROJECT_DIR$/rev_suffixes.txt" />
         <option value="$PROJECT_DIR$/rev_y_replacement.txt" />
         <option value="$PROJECT_DIR$/rule_e-insertion.txt" />
         <option value="$PROJECT_DIR$/rule_k-insertion.txt" />
+        <option value="$PROJECT_DIR$/start_states_FST.txt" />
+        <option value="$PROJECT_DIR$/src/WordHelper.java" />
+        <option value="$PROJECT_DIR$/fst1.txt" />
         <option value="$PROJECT_DIR$/rule_y-replacement.txt" />
+        <option value="$PROJECT_DIR$/src/FSTConstants.java" />
+        <option value="$PROJECT_DIR$/src/FSTBuilder.java" />
+        <option value="$PROJECT_DIR$/src/FST.java" />
       </list>
     </option>
   </component>
@@ -823,7 +771,7 @@
       <updated>1509725213197</updated>
       <workItem from="1509725214762" duration="30641000" />
       <workItem from="1510246927624" duration="50000" />
-      <workItem from="1510331415961" duration="11850000" />
+      <workItem from="1510331415961" duration="17679000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <created>1510071791651</created>
@@ -885,7 +833,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="42541000" />
+    <option name="totallyTimeSpent" value="48370000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="877" extended-state="6" />
@@ -897,10 +845,10 @@
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32919255" sideWeight="0.50277776" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32919255" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32919255" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32919255" sideWeight="0.49722221" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -951,9 +899,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
           <caret line="18" column="34" lean-forward="true" selection-start-line="18" selection-start-column="34" selection-end-line="18" selection-end-column="34" />
-          <folding>
-            <marker date="1510331572656" expanded="true" signature="2:1476" ph="..." />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -972,7 +918,7 @@
         <state relative-caret-position="285">
           <caret line="21" column="0" lean-forward="true" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1031,9 +977,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="480">
           <caret line="36" column="0" lean-forward="false" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
-          <folding>
-            <marker date="1510331572656" expanded="true" signature="2:1476" ph="..." />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1076,13 +1020,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/FSTString.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="435">
-          <caret line="34" column="32" lean-forward="false" selection-start-line="34" selection-start-column="32" selection-end-line="34" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/j_verbs.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
@@ -1098,14 +1035,6 @@
           <folding>
             <element signature="imports" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/i_nouns_FST.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-600">
-          <caret line="17" column="13" lean-forward="true" selection-start-line="17" selection-start-column="8" selection-end-line="17" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1153,14 +1082,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="270">
           <caret line="18" column="13" lean-forward="true" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/rule_k-insertion_others.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="34" column="13" lean-forward="false" selection-start-line="34" selection-start-column="13" selection-end-line="34" selection-end-column="13" />
           <folding />
         </state>
       </provider>
@@ -1213,22 +1134,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/fst1.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="19" column="10" lean-forward="true" selection-start-line="19" selection-start-column="10" selection-end-line="19" selection-end-column="10" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/FSTBuilder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1176">
-          <caret line="116" column="56" lean-forward="true" selection-start-line="116" selection-start-column="56" selection-end-line="116" selection-end-column="56" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/suffixes_rev.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="195">
@@ -1241,58 +1146,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/FST.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="79" column="50" lean-forward="true" selection-start-line="79" selection-start-column="50" selection-end-line="79" selection-end-column="50" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/start_states_FST.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" column="0" lean-forward="false" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/StartStateHelper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="23" column="29" lean-forward="true" selection-start-line="23" selection-start-column="29" selection-end-line="23" selection-end-column="29" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/SuffixHelper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="15" column="33" lean-forward="true" selection-start-line="15" selection-start-column="33" selection-end-line="15" selection-end-column="33" />
-          <folding>
-            <marker date="1510331572656" expanded="true" signature="2:1476" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/WordHelper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="589">
-          <caret line="84" column="40" lean-forward="true" selection-start-line="84" selection-start-column="40" selection-end-line="84" selection-end-column="40" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/OrthographicRulesHelper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="68" column="66" lean-forward="true" selection-start-line="68" selection-start-column="66" selection-end-line="68" selection-end-column="66" />
           <folding />
         </state>
       </provider>
@@ -1313,14 +1166,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/rev_suffixes.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="30" column="10" lean-forward="true" selection-start-line="30" selection-start-column="10" selection-end-line="30" selection-end-column="10" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/rev_y_replacement.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
@@ -1337,10 +1182,58 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/FSTConstants.java">
+    <entry file="file://$PROJECT_DIR$/start_states_FST.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="649">
-          <caret line="50" column="55" lean-forward="false" selection-start-line="50" selection-start-column="49" selection-end-line="50" selection-end-column="55" />
+        <state relative-caret-position="135">
+          <caret line="9" column="0" lean-forward="false" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/rev_suffixes.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="80">
+          <caret line="30" column="10" lean-forward="true" selection-start-line="30" selection-start-column="10" selection-end-line="30" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/i_nouns_FST.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="260">
+          <caret line="93" column="21" lean-forward="true" selection-start-line="93" selection-start-column="21" selection-end-line="93" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/regular_verbs.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="0" lean-forward="true" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/rule_k-insertion_others.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="13" lean-forward="false" selection-start-line="0" selection-start-column="13" selection-end-line="0" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fst1.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="290">
+          <caret line="48" column="13" lean-forward="false" selection-start-line="48" selection-start-column="13" selection-end-line="48" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/rule_y-replacement.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="12" column="13" lean-forward="false" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
           <folding />
         </state>
       </provider>
@@ -1353,18 +1246,66 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/regular_verbs.txt">
+    <entry file="file://$PROJECT_DIR$/src/FSTConstants.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="750">
+          <caret line="50" column="28" lean-forward="false" selection-start-line="50" selection-start-column="28" selection-end-line="50" selection-end-column="28" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/rule_y-replacement.txt">
+    <entry file="file://$PROJECT_DIR$/src/SuffixHelper.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" column="13" lean-forward="true" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+        <state relative-caret-position="225">
+          <caret line="15" column="33" lean-forward="false" selection-start-line="15" selection-start-column="33" selection-end-line="15" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/WordHelper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="20" column="9" lean-forward="true" selection-start-line="20" selection-start-column="9" selection-end-line="20" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/FST.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1655">
+          <caret line="218" column="5" lean-forward="true" selection-start-line="218" selection-start-column="5" selection-end-line="218" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/FSTString.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="435">
+          <caret line="34" column="32" lean-forward="false" selection-start-line="34" selection-start-column="32" selection-end-line="34" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/OrthographicRulesHelper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="11" column="13" lean-forward="false" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/FSTBuilder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1395">
+          <caret line="94" column="38" lean-forward="false" selection-start-line="94" selection-start-column="38" selection-end-line="94" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/StartStateHelper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="16" column="0" lean-forward="true" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
           <folding />
         </state>
       </provider>

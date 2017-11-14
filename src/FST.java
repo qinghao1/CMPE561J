@@ -6,15 +6,17 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class FST implements FSTConstants {
     class State {
         int stateNumber;
-        HashMap<Character, Pair<String, Integer>> transitions = new HashMap<>();
+        HashMap<Character, Pair<String, Integer>> transitions;
 
         State(int _stateNumber) {
+            transitions = new HashMap<>();
             stateNumber = _stateNumber;
         }
 
@@ -57,10 +59,12 @@ public class FST implements FSTConstants {
         for (int i = 0; i < s.length(); i++) {
             char c = s.charAt(i);
 
+            List<State> toRemove = new ArrayList<>();
             for (State possibleState : stateSet.keySet()) {
                 Pair<String, Integer> transition = possibleState.transitions.get(c);
                 if (transition == null) {
                     //Remove from set, do nothing
+                    toRemove.add(possibleState);
                 } else {
                     State newState = stateList.get(transition.getValue());
                     String possibleStateOutput = stateSet.get(possibleState);
@@ -73,38 +77,52 @@ public class FST implements FSTConstants {
                         newOutput = possibleStateOutput + transitionOutput;
                     }
                     stateSet.put(newState, newOutput);
+
+                    if (newState.stateNumber != possibleState.stateNumber) {
+                        toRemove.add(possibleState);
+                    }
                 }
-                stateSet.remove(possibleState);
             }
+            for (State toBeRemovedState : toRemove) stateSet.remove(toBeRemovedState);
 
             //Add all possible epsilon transitions
-            for (State possibleState : stateSet.keySet()) {
-                Pair<String, Integer> epsTransition = possibleState.transitions.get(EPSILON);
-                if (epsTransition == null) {
-                    //No epsilon transition
-                } else {
-                    State newState = stateList.get(epsTransition.getValue());
-                    String possibleStateOutput = stateSet.get(possibleState);
-                    String newOutput = possibleStateOutput;
-
-                    String transitionOutput = epsTransition.getKey();
-                    if (transitionOutput.equals(EPSILON)) {
-                        //Don't append anything to current output
-                        //This should technically only happen for final state
+            //As there may be more than 1 epsilon transition in series, we run this until no new states are added
+            boolean newStateAdded = true;
+            while (newStateAdded) {
+                newStateAdded = false;
+                for (State possibleState : stateSet.keySet()) {
+                    Pair<String, Integer> epsTransition = possibleState.transitions.get(EPSILON_INPUT);
+                    if (epsTransition == null) {
+                        //No epsilon transition
                     } else {
-                        newOutput = possibleStateOutput + transitionOutput;
+                        State newState = stateList.get(epsTransition.getValue());
+                        String possibleStateOutput = stateSet.get(possibleState);
+                        String newOutput = possibleStateOutput;
+
+                        String transitionOutput = epsTransition.getKey();
+                        if (transitionOutput.equals(EPSILON)) {
+                            //Don't append anything to current output
+                            //This should technically only happen for final state
+                        } else {
+                            newOutput = possibleStateOutput + transitionOutput;
+                        }
+                        if (!stateSet.containsKey(newState)) newStateAdded = true;
+                        stateSet.put(newState, newOutput);
                     }
-                    stateSet.put(newState, newOutput);
                 }
             }
 
             //If no states remaining in set of possible sets, input is invalid
-            if (stateSet.isEmpty()) return WRONG_INPUT_MESSAGE;
+            if (stateSet.isEmpty()) {
+                return WRONG_INPUT_MESSAGE;
+            }
         }
 
         //There should only be one final state in set
         for (State possibleState : stateSet.keySet()) {
-            if (possibleState.stateNumber == FINAL_STATE_NUMBER) return stateSet.get(possibleState);
+            if (possibleState.stateNumber == FINAL_STATE_NUMBER) {
+                return stateSet.get(possibleState);
+            }
         }
 
         return WRONG_INPUT_MESSAGE;
@@ -122,6 +140,9 @@ public class FST implements FSTConstants {
                 BufferedReader br = new BufferedReader(new FileReader(fileName));
                 String currentLine;
                 while ((currentLine = br.readLine()) != null) {
+                    //Skip if empty string
+                    if (currentLine.isEmpty()) continue;
+
                     //Skip if comment line
                     if (currentLine.matches(commentRegex)) continue;
 
@@ -151,4 +172,50 @@ public class FST implements FSTConstants {
 
         return fst;
     }
+
+    public static FST buildReverseFST(ArrayList<String> fileNames, int _START_STATE_NUM) {
+        String inputLineRegex = "^([\\d]+)\\s+([\\d]+)\\s+(.+)\\s+(.)$";
+        Pattern inputPattern = Pattern.compile(inputLineRegex);
+
+        String commentRegex = "^#.+";
+
+        FST fst = new FST(_START_STATE_NUM);
+        for (String fileName : fileNames) {
+            try {
+                BufferedReader br = new BufferedReader(new FileReader(fileName));
+                String currentLine;
+                while ((currentLine = br.readLine()) != null) {
+                    //Skip if empty string
+                    if (currentLine.isEmpty()) continue;
+
+                    //Skip if comment line
+                    if (currentLine.matches(commentRegex)) continue;
+
+                    //Skip if not valid input (Prints warning)
+                    if (!currentLine.matches(inputLineRegex)) {
+                        System.out.println("WARNING: Following line is not valid FST input");
+                        System.out.println(currentLine);
+                        continue;
+                    }
+
+                    Matcher inputMatcher = inputPattern.matcher(currentLine);
+                    inputMatcher.find();
+
+                    int state1 = Integer.parseInt(inputMatcher.group(1));
+                    int state2 = Integer.parseInt(inputMatcher.group(2));
+                    char inputChar = inputMatcher.group(4).charAt(0);
+                    String outputString = inputMatcher.group(3);
+
+                    fst.addArc(state1, state2, inputChar, outputString);
+                }
+            } catch (FileNotFoundException e) {
+                System.out.println("Error: No file found: " + fileName);
+            } catch (IOException e) {
+                System.out.println("Error while reading file: " + fileName);
+            }
+        }
+
+        return fst;
+    }
+
 }
