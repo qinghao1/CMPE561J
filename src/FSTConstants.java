@@ -2,12 +2,12 @@
 public interface FSTConstants {
     public static final int MAIN_FST_START_STATE_NUM = 0;
     public static final int Y_REP_FST_START_STATE_NUM = 20;
-    public static final int K_INS_FST_START_STATE_NUM = 90;
+    public static final int K_INS_FST_START_STATE_NUM = 30;
     public static final int E_INS_FST_START_STATE_NUM = 40;
 
     public static final int REV_E_INS_FST_START_STATE_NUM = 80;
-    public static final int REV_Y_REP_FST_START_STATE_NUM = 100;
     public static final int REV_K_INS_FST_START_STATE_NUM = 90;
+    public static final int REV_Y_REP_FST_START_STATE_NUM = 100;
 
     public static final int REV_SUFFIX_FST_START_STATE_NUM = 50;
 
@@ -37,11 +37,11 @@ public interface FSTConstants {
 
     //Symbols
     public static final String EPSILON = "&";
+    public static final char EPSILON_INPUT = EPSILON.charAt(0); //Input is char, output is String
     public static final char MORPHEME_BOUNDARY = '^';
 
     //Alphabet + Symbols
     public static final String ALL_VALID_INPUTS = ALPHABET
-            + EPSILON
             + MORPHEME_BOUNDARY;
 
     //Number from which non-constant states start

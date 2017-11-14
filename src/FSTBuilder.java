@@ -3,6 +3,7 @@ import java.util.HashMap;
 
 public class FSTBuilder implements FSTConstants {
     public static String chainFST(String input, FST... fsts) {
+        int i = 0;
         for (FST fst : fsts) {
             if (input.equals(WRONG_INPUT_MESSAGE)) return WRONG_INPUT_MESSAGE;
             input = fst.feed(input);
@@ -58,6 +59,7 @@ public class FSTBuilder implements FSTConstants {
 
         //Make main FST (lexical intermediate FST)
         FST mainFST = FST.buildFST(fstInputList, MAIN_FST_START_STATE_NUM);
+        FST mainReverseFST = FST.buildReverseFST(fstInputList, MAIN_FST_START_STATE_NUM);
 
         //Make orthographic FSTs
 
@@ -121,8 +123,9 @@ public class FSTBuilder implements FSTConstants {
         FST revSuffixesFST = FST.buildFST(revSuffixesInputFiles, REV_SUFFIX_FST_START_STATE_NUM);
         
         //Test
-        System.out.println(chainFST("snoitaeziretupmoc", revKInsertionFST, revYReplacementFST, revEInsertionFST, revSuffixesFST));
+//        System.out.println(chainFST("snoitaeziretupmoc", revKInsertionFST, revYReplacementFST, revEInsertionFST, revSuffixesFST));
 //        System.out.println(chainFST("blissNP", mainFST, kInsertionFST, yReplacementFST, eInsertionFST));
+        System.out.println(chainFST("bliss", mainReverseFST));
 
     }
 }
