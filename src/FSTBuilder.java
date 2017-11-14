@@ -15,19 +15,6 @@ public class FSTBuilder implements FSTConstants {
     }
 
     public static void main(String[] args) {
-    	System.out.println("Surface level to lexical leve? (1)");
-    	System.out.println("Lexical level to surface level? (2)");
-    	int direction = 0;
-    	Scanner reader = new Scanner(System.in);  // Reading from System.in
-		System.out.println("Enter a number: ");
-		direction = reader.nextInt(); // Scans the next token of the input as an int.
-		//once finished
-		System.out.println("Enter your word: ");
-		reader = new Scanner(System.in);
-		String word = reader.nextLine();
-		
-		reader.close();
-    	
         //Initialize sequence list and list of FST input filenames
         ArrayList<String> sequenceList = new ArrayList<>();
         ArrayList<String> fstInputList = new ArrayList<>();
@@ -131,7 +118,7 @@ public class FSTBuilder implements FSTConstants {
         revYReplacementInputFiles.add(revYReplacementRuleFile);
         revYReplacementInputFiles.add(revYReplacementOthersFileName);
         FST revYReplacementFST = FST.buildFST(revYReplacementInputFiles, REV_Y_REP_FST_START_STATE_NUM);
-//
+
         //Reverse k-insertion
         ArrayList<String> revKInsertionInputFiles = new ArrayList<>();
         String revKInsertionRuleFile = "rev_k_insertion.txt";
@@ -148,7 +135,18 @@ public class FSTBuilder implements FSTConstants {
         revSuffixesInputFiles.add(revSuffixesOthersFileName);
         FST revSuffixesFST = FST.buildFST(revSuffixesInputFiles, REV_SUFFIX_FST_START_STATE_NUM);
 
-        String originalString = word;
+        System.out.println("Surface level to lexical leve? (1)");
+        System.out.println("Lexical level to surface level? (2)");
+        int direction = 0;
+        Scanner reader = new Scanner(System.in);  // Reading from System.in
+        System.out.println("Enter a number: ");
+        direction = reader.nextInt(); // Scans the next token of the input as an int.
+        //once finished
+        System.out.println("Enter your word: ");
+        reader = new Scanner(System.in);
+        String originalString = reader.nextLine();
+        reader.close();
+
         if (direction == 1) {
         	String carettedString = chainFST((
                     new StringBuffer(originalString).reverse().toString()),
@@ -157,7 +155,7 @@ public class FSTBuilder implements FSTConstants {
         	System.out.println("Your word is " + res);
         } else if (direction == 2) {
         	String inter = chainFST(originalString, mainFST);
-        	String res = chainFST(inter,kInsertionFST, yReplacementFST, eInsertionFST, carDeletionFST);
+        	String res = chainFST(inter,kInsertionFST, yReplacementFST, eInsertionFST);
         	System.out.println("Your word is " + res);
         }
     }

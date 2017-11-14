@@ -1,7 +1,7 @@
 //Constants for FST "end" states and so on
 public interface FSTConstants {
     public static final int MAIN_FST_START_STATE_NUM = 0;
-    public static final int Y_REP_FST_START_STATE_NUM = 520;
+    public static final int Y_REP_FST_START_STATE_NUM = 20;
     public static final int K_INS_FST_START_STATE_NUM = 30;
     public static final int E_INS_FST_START_STATE_NUM = 40;
     public static final int CAR_DEL_FST_START_STATE_NUM = 300;
