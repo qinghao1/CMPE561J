@@ -14,9 +14,12 @@ public class FST implements FSTConstants {
     class State {
         int stateNumber;
         HashMap<Character, Pair<String, Integer>> transitions;
+        //Special HashSet for epsilon transitions because there can be multiple of them
+        HashSet<Pair<String, Integer>> epsTransitions;
 
         State(int _stateNumber) {
             transitions = new HashMap<>();
+            epsTransitions = new HashSet<>();
             stateNumber = _stateNumber;
         }
 
@@ -31,7 +34,11 @@ public class FST implements FSTConstants {
         }
 
         void addTransition(char i, String o, int nxt) {
-            transitions.put(i, new Pair(o, nxt));
+            if (i == EPSILON_INPUT) {
+                epsTransitions.add(new Pair(o, nxt));
+            } else {
+                transitions.put(i, new Pair(o, nxt));
+            }
         }
     }
 
@@ -59,28 +66,51 @@ public class FST implements FSTConstants {
         for (int i = 0; i < s.length(); i++) {
             char c = s.charAt(i);
 
+            //Need to use toRemove and toAdd lists to prevent in-place modification
+            //while iterating through the set
             List<State> toRemove = new ArrayList<>();
             List<Pair<State, String>> toAdd = new ArrayList<>();
             for (State possibleState : stateSet.keySet()) {
-                Pair<String, Integer> transition = possibleState.transitions.get(c);
-                if (transition == null) {
-                    //Remove from set, do nothing
-                    toRemove.add(possibleState);
-                } else {
-                    State newState = stateList.get(transition.getValue());
-                    String possibleStateOutput = stateSet.get(possibleState);
-                    String newOutput = possibleStateOutput;
+                //Handle epsilon and non-epsilon inputs differently
+                if (c == EPSILON_INPUT) {
+                    boolean newStateAdded = false;
+                    for (Pair <String, Integer> transition : possibleState.epsTransitions) {
+                        State newState = stateList.get(transition.getValue());
+                        String possibleStateOutput = stateSet.get(possibleState);
+                        String newOutput = possibleStateOutput;
 
-                    String transitionOutput = transition.getKey();
-                    if (transitionOutput.equals(EPSILON)) {
-                        //Don't append anything to current output
-                    } else {
-                        newOutput = possibleStateOutput + transitionOutput;
+                        String transitionOutput = transition.getKey();
+                        if (transitionOutput.equals(EPSILON)) {
+                            //Don't append anything to current output
+                        } else {
+                            newOutput = possibleStateOutput + transitionOutput;
+                        }
+                        toAdd.add(new Pair(newState, newOutput));
+
+                        if (newState.stateNumber != possibleState.stateNumber) newStateAdded = true;
                     }
-                    toAdd.add(new Pair(newState, newOutput));
-
-                    if (newState.stateNumber != possibleState.stateNumber) {
+                    if (!newStateAdded) toRemove.add(possibleState);
+                } else {
+                    Pair<String, Integer> transition = possibleState.transitions.get(c);
+                    if (transition == null) {
+                        //Remove from set, do nothing
                         toRemove.add(possibleState);
+                    } else {
+                        State newState = stateList.get(transition.getValue());
+                        String possibleStateOutput = stateSet.get(possibleState);
+                        String newOutput = possibleStateOutput;
+
+                        String transitionOutput = transition.getKey();
+                        if (transitionOutput.equals(EPSILON)) {
+                            //Don't append anything to current output
+                        } else {
+                            newOutput = possibleStateOutput + transitionOutput;
+                        }
+                        toAdd.add(new Pair(newState, newOutput));
+
+                        if (newState.stateNumber != possibleState.stateNumber) {
+                            toRemove.add(possibleState);
+                        }
                     }
                 }
             }
@@ -97,10 +127,7 @@ public class FST implements FSTConstants {
             while (newStateAdded) {
                 newStateAdded = false;
                 for (State possibleState : stateSet.keySet()) {
-                    Pair<String, Integer> epsTransition = possibleState.transitions.get(EPSILON_INPUT);
-                    if (epsTransition == null) {
-                        //No epsilon transition
-                    } else {
+                    for (Pair<String, Integer> epsTransition : possibleState.epsTransitions) {
                         State newState = stateList.get(epsTransition.getValue());
                         String possibleStateOutput = stateSet.get(possibleState);
                         String newOutput = possibleStateOutput;
@@ -127,9 +154,11 @@ public class FST implements FSTConstants {
             }
         }
 
-        //There should only be one final state in set
+        //There can be multiple final states with corresponding outputs, but we just
+        //take the first one
         for (State possibleState : stateSet.keySet()) {
             if (possibleState.stateNumber == FINAL_STATE_NUMBER) {
+//                System.out.println(stateSet.get(possibleState));
                 return stateSet.get(possibleState);
             }
         }

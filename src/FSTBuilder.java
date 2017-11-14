@@ -55,15 +55,12 @@ public class FSTBuilder implements FSTConstants {
         StartStateHelper.makeFile("start_states_FST.txt", trieMap);
         fstInputList.add("start_states_FST.txt");
 
-        fstInputList.add("fst1.txt");
+        fstInputList.add("fst1_edited.txt");
 
         //Make main FST (lexical intermediate FST)
         FST mainFST = FST.buildFST(fstInputList, MAIN_FST_START_STATE_NUM);
 
-        //Special file for reverse FST
-        fstInputList.add("fst1Reverse.txt");
-        fstInputList.add("int_to_lex_reverse.txt");
-        fstInputList.add(OrthographicRulesHelper.modifyFile("int_to_lex_reverse.txt"));
+        //Make inverted main FST
         FST mainReverseFST = FST.buildReverseFST(fstInputList, MAIN_FST_START_STATE_NUM);
 
         //Make orthographic FSTs
@@ -86,11 +83,12 @@ public class FSTBuilder implements FSTConstants {
 
         //Y-replacement FST
         ArrayList<String> yReplacementInputFiles = new ArrayList<>();
-        String yReplacementRuleFile = "rule_y-replacement.txt";
+        String yReplacementRuleFile = "Y_REPLACEMENT.txt";
         String yReplacementOthersFileName = OrthographicRulesHelper.modifyFile(yReplacementRuleFile);
         yReplacementInputFiles.add(yReplacementRuleFile);
         yReplacementInputFiles.add(yReplacementOthersFileName);
         FST yReplacementFST = FST.buildFST(yReplacementInputFiles, Y_REP_FST_START_STATE_NUM);
+        FST revYReplacementFST = FST.buildReverseFST(yReplacementInputFiles, Y_REP_FST_START_STATE_NUM);
 
 
         //Reverse orthographic FSTs
@@ -103,14 +101,14 @@ public class FSTBuilder implements FSTConstants {
         revEInsertionInputFiles.add(revEInsertionOthersFileName);
         FST revEInsertionFST = FST.buildFST(revEInsertionInputFiles, REV_E_INS_FST_START_STATE_NUM);
 
-        //Reverse y-replacement
-        ArrayList<String> revYReplacementInputFiles = new ArrayList<>();
-        String revYReplacementRuleFile = "rev_y_replacement.txt";
-        String revYReplacementOthersFileName = OrthographicRulesHelper.modifyFile(revYReplacementRuleFile);
-        revYReplacementInputFiles.add(revYReplacementRuleFile);
-        revYReplacementInputFiles.add(revYReplacementOthersFileName);
-        FST revYReplacementFST = FST.buildFST(revYReplacementInputFiles, REV_Y_REP_FST_START_STATE_NUM);
-        
+//        //Reverse y-replacement
+//        ArrayList<String> revYReplacementInputFiles = new ArrayList<>();
+//        String revYReplacementRuleFile = "rev_y_replacement.txt";
+//        String revYReplacementOthersFileName = OrthographicRulesHelper.modifyFile(revYReplacementRuleFile);
+//        revYReplacementInputFiles.add(revYReplacementRuleFile);
+//        revYReplacementInputFiles.add(revYReplacementOthersFileName);
+//        FST revYReplacementFST = FST.buildFST(revYReplacementInputFiles, REV_Y_REP_FST_START_STATE_NUM);
+//
         //Reverse k-insertion
         ArrayList<String> revKInsertionInputFiles = new ArrayList<>();
         String revKInsertionRuleFile = "rev_k_insertion.txt";
@@ -128,10 +126,11 @@ public class FSTBuilder implements FSTConstants {
         FST revSuffixesFST = FST.buildFST(revSuffixesInputFiles, REV_SUFFIX_FST_START_STATE_NUM);
         
         //Test
-        String reversedString = chainFST("snoitaeziretupmoc", revKInsertionFST, revYReplacementFST, revEInsertionFST, revSuffixesFST);
-        System.out.println(reversedString);
-        System.out.println(chainFST((new StringBuffer(reversedString).reverse().toString()), mainReverseFST));
-//        System.out.println(chainFST("blissNP", mainFST, kInsertionFST, yReplacementFST, eInsertionFST));
+//        String reversedString = chainFST("stac", revKInsertionFST, revYReplacementFST, revEInsertionFST, revSuffixesFST);
+//        System.out.println(reversedString);
+//        System.out.println(chainFST((new StringBuffer(reversedString).reverse().toString()), mainReverseFST));
+        System.out.println(chainFST("material^s", mainReverseFST));
+//        System.out.println(chainFST("tries", revYReplacementFST));
 //        System.out.println(chainFST("bliss", mainReverseFST));
 
     }
