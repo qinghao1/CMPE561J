@@ -1,15 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="15479358-5809-4156-9d7f-ae8fdb7aaf59" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/cmpe561J_jar/cmpe561J.jar" afterPath="$PROJECT_DIR$/out/artifacts/cmpe561J_jar/cmpe561J.jar" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/cmpe561J/FSTBuilder.class" afterPath="$PROJECT_DIR$/out/production/cmpe561J/FSTBuilder.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/cmpe561J/FSTConstants.class" afterPath="$PROJECT_DIR$/out/production/cmpe561J/FSTConstants.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/cmpe561J.jar" afterPath="$PROJECT_DIR$/test/cmpe561J.jar" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/FSTBuilder.java" afterPath="$PROJECT_DIR$/src/FSTBuilder.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/FSTConstants.java" afterPath="$PROJECT_DIR$/src/FSTConstants.java" />
-    </list>
+    <list default="true" id="15479358-5809-4156-9d7f-ae8fdb7aaf59" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -60,7 +52,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="FSTBuilder.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="FSTBuilder.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/FSTBuilder.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="256">
@@ -90,10 +82,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="FSTConstants.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="FSTConstants.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/FSTConstants.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-407">
+            <state relative-caret-position="60">
               <caret line="4" column="59" lean-forward="false" selection-start-line="4" selection-start-column="59" selection-end-line="4" selection-end-column="59" />
               <folding />
             </state>
@@ -260,6 +252,11 @@
               <item name="out" type="462c0819:PsiDirectoryNode" />
               <item name="artifacts" type="462c0819:PsiDirectoryNode" />
               <item name="cmpe561J_jar" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="NLP_Project" type="b2602c69:ProjectViewProjectNode" />
+              <item name="cmpe561J" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -846,7 +843,7 @@
       <workItem from="1509725214762" duration="30641000" />
       <workItem from="1510246927624" duration="50000" />
       <workItem from="1510331415961" duration="32321000" />
-      <workItem from="1510660761157" duration="3798000" />
+      <workItem from="1510660761157" duration="4199000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <created>1510071791651</created>
@@ -929,7 +926,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="66810000" />
+    <option name="totallyTimeSpent" value="67211000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="877" extended-state="6" />
@@ -1252,14 +1249,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/FSTConstants.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-407">
-          <caret line="4" column="59" lean-forward="false" selection-start-line="4" selection-start-column="59" selection-end-line="4" selection-end-column="59" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/FST.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="242">
@@ -1312,6 +1301,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="256">
           <caret line="148" column="0" lean-forward="false" selection-start-line="148" selection-start-column="0" selection-end-line="148" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/FSTConstants.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="59" lean-forward="false" selection-start-line="4" selection-start-column="59" selection-end-line="4" selection-end-column="59" />
           <folding />
         </state>
       </provider>
