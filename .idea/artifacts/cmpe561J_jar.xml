@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" build-on-make="true" name="cmpe561J:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/cmpe561J_jar</output-path>
+    <root id="archive" name="cmpe561J.jar">
+      <element id="module-output" name="cmpe561J" />
+    </root>
+  </artifact>
+</component>

@@ -1,2 +1,3 @@
-ruby symbols.rb
-cat *_FST.txt > fst1.fst
+cd src
+javac -Xlint:unchecked FSTBuilder.java
+java FSTBuilder "$@"

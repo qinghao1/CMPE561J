@@ -109,7 +109,7 @@ public class FSTBuilder implements FSTConstants {
 
         //Y-replacement FST
         ArrayList<String> yReplacementInputFiles = new ArrayList<>();
-        String yReplacementRuleFile = "Y_REPLACEMENT.txt";
+        String yReplacementRuleFile = "rule_y-replacement.txt";
         String yReplacementOthersFileName = OrthographicRulesHelper.modifyFile(yReplacementRuleFile);
         yReplacementInputFiles.add(yReplacementRuleFile);
         yReplacementInputFiles.add(yReplacementOthersFileName);
@@ -157,6 +157,7 @@ public class FSTBuilder implements FSTConstants {
         revSuffixesInputFiles.add(revSuffixesOthersFileName);
         FST revSuffixesFST = FST.buildFST(revSuffixesInputFiles, REV_SUFFIX_FST_START_STATE_NUM);
         
+<<<<<<< Updated upstream
         //Test
         String originalString = word;
         if (direction == 1) {
@@ -176,6 +177,17 @@ public class FSTBuilder implements FSTConstants {
 //        System.out.println(chainFST("fox^s", eInsertionFST, yReplacementFST, kInsertionFST, carDeletionFST));
 //        System.out.println(chainFST("tries", revYReplacementFST));
 //        System.out.println(chainFST("abuse^ing", mainReverseFST));
+=======
+        //Run FSTs on user input
+        for (int i = 0; i < args.length; i++) {
+            String originalString = args[i];
+            String carettedString = chainFST((
+                            new StringBuffer(originalString).reverse().toString()),
+                    revKInsertionFST, revYReplacementFST, revEInsertionFST, revSuffixesFST);
+            System.out.println(chainFST((new StringBuffer(carettedString).reverse().toString()), mainReverseFST));
+        }
+>>>>>>> Stashed changes
 
+        System.out.println(chainFST("materialNZ", mainFST));
     }
 }
