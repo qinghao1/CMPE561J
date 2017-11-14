@@ -27,15 +27,6 @@ public class FSTBuilder implements FSTConstants {
 		String word = reader.nextLine();
 		
 		reader.close();
-    	/*
-		StringBuffer in = new StringBuffer();
-    	for (int i =0; i<args.length;i++){
-    		in.append(args[i]);
-    	}
-    	
-    	
-    	System.out.println(in.toString());
-    	*/
     	
         //Initialize sequence list and list of FST input filenames
         ArrayList<String> sequenceList = new ArrayList<>();
@@ -156,9 +147,7 @@ public class FSTBuilder implements FSTConstants {
         revSuffixesInputFiles.add(revSuffixesRuleFile);
         revSuffixesInputFiles.add(revSuffixesOthersFileName);
         FST revSuffixesFST = FST.buildFST(revSuffixesInputFiles, REV_SUFFIX_FST_START_STATE_NUM);
-        
-<<<<<<< Updated upstream
-        //Test
+
         String originalString = word;
         if (direction == 1) {
         	String carettedString = chainFST((
@@ -171,22 +160,6 @@ public class FSTBuilder implements FSTConstants {
         	String res = chainFST(inter,kInsertionFST, yReplacementFST, eInsertionFST, carDeletionFST);
         	System.out.println("Your word is " + res);
         }
-        
-//        System.out.println(chainFST((new StringBuffer(carettedString).reverse().toString()), mainReverseFST));
-//        System.out.println(chainFST("material^s", revKInsertionFST, revYReplacementFST, revEInsertionFST, mainReverseFST));
-//        System.out.println(chainFST("fox^s", eInsertionFST, yReplacementFST, kInsertionFST, carDeletionFST));
-//        System.out.println(chainFST("tries", revYReplacementFST));
-//        System.out.println(chainFST("abuse^ing", mainReverseFST));
-=======
-        //Run FSTs on user input
-        for (int i = 0; i < args.length; i++) {
-            String originalString = args[i];
-            String carettedString = chainFST((
-                            new StringBuffer(originalString).reverse().toString()),
-                    revKInsertionFST, revYReplacementFST, revEInsertionFST, revSuffixesFST);
-            System.out.println(chainFST((new StringBuffer(carettedString).reverse().toString()), mainReverseFST));
-        }
->>>>>>> Stashed changes
 
         System.out.println(chainFST("materialNZ", mainFST));
     }
