@@ -167,6 +167,7 @@ public class FST implements FSTConstants {
         return WRONG_INPUT_MESSAGE;
     }
 
+    //Class method, builds a FST given list of file names and start state number
     public static FST buildFST(ArrayList<String> fileNames, int _START_STATE_NUM) {
         String inputLineRegex = "^([\\d]+)\\s+([\\d]+)\\s+(.)\\s+(.+)$";
         Pattern inputPattern = Pattern.compile(inputLineRegex);
@@ -212,6 +213,7 @@ public class FST implements FSTConstants {
         return fst;
     }
 
+    //Builds inverted FST (input and output labels are switched)
     public static FST buildReverseFST(ArrayList<String> fileNames, int _START_STATE_NUM) {
         String inputLineRegex = "^([\\d]+)\\s+([\\d]+)\\s+(.+)\\s+(.)$";
         Pattern inputPattern = Pattern.compile(inputLineRegex);
