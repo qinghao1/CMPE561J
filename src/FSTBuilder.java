@@ -127,7 +127,7 @@ public class FSTBuilder implements FSTConstants {
         FST revSuffixesFST = FST.buildFST(revSuffixesInputFiles, REV_SUFFIX_FST_START_STATE_NUM);
         
         //Test
-        String originalString = "alphabets";
+        String originalString = "acting";
         String carettedString = chainFST((
                 new StringBuffer(originalString).reverse().toString()),
                 revKInsertionFST, revYReplacementFST, revEInsertionFST, revSuffixesFST);
