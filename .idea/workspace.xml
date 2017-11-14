@@ -2,34 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="15479358-5809-4156-9d7f-ae8fdb7aaf59" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/SuffixHelper.java" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/cmpe561J/FST$State.class" afterPath="$PROJECT_DIR$/out/production/cmpe561J/FST$State.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/cmpe561J/FST.class" afterPath="$PROJECT_DIR$/out/production/cmpe561J/FST.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/cmpe561J/FSTBuilder.class" afterPath="$PROJECT_DIR$/out/production/cmpe561J/FSTBuilder.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/cmpe561J/FSTConstants.class" afterPath="$PROJECT_DIR$/out/production/cmpe561J/FSTConstants.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/cmpe561J/FSTTrieHelper.class" afterPath="$PROJECT_DIR$/out/production/cmpe561J/FSTTrieHelper.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/cmpe561J/OrthographicRulesHelper.class" afterPath="$PROJECT_DIR$/out/production/cmpe561J/OrthographicRulesHelper.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/cmpe561J/WordHelper.class" afterPath="$PROJECT_DIR$/out/production/cmpe561J/WordHelper.class" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/FSTString.java" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/fst1.txt" afterPath="$PROJECT_DIR$/fst1.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/i_nouns_FST.txt" afterPath="$PROJECT_DIR$/i_nouns_FST.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/j_verbs_FST.txt" afterPath="$PROJECT_DIR$/j_verbs_FST.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/k_verbs_FST.txt" afterPath="$PROJECT_DIR$/k_verbs_FST.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/l_nouns_FST.txt" afterPath="$PROJECT_DIR$/l_nouns_FST.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ous_adjectives_FST.txt" afterPath="$PROJECT_DIR$/ous_adjectives_FST.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/rev_k_insertion_others.txt" afterPath="$PROJECT_DIR$/rev_k_insertion_others.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/rev_s_insertion_others.txt" afterPath="$PROJECT_DIR$/rev_s_insertion_others.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/rev_suffixes_others.txt" afterPath="$PROJECT_DIR$/rev_suffixes_others.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/rev_y_replacement_others.txt" afterPath="$PROJECT_DIR$/rev_y_replacement_others.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/rule_e-insertion_others.txt" afterPath="$PROJECT_DIR$/rule_e-insertion_others.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/rule_k-insertion_others.txt" afterPath="$PROJECT_DIR$/rule_k-insertion_others.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/rule_y-replacement.txt" afterPath="$PROJECT_DIR$/rule_y-replacement.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/rule_y-replacement_others.txt" afterPath="$PROJECT_DIR$/rule_y-replacement_others.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/FST.java" afterPath="$PROJECT_DIR$/src/FST.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/FSTBuilder.java" afterPath="$PROJECT_DIR$/src/FSTBuilder.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/FSTConstants.java" afterPath="$PROJECT_DIR$/src/FSTConstants.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/WordHelper.java" afterPath="$PROJECT_DIR$/src/WordHelper.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/start_states_FST.txt" afterPath="$PROJECT_DIR$/start_states_FST.txt" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -44,17 +18,17 @@
       <file leaf-file-name="FST.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/FST.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3060">
+            <state relative-caret-position="1655">
               <caret line="218" column="5" lean-forward="true" selection-start-line="218" selection-start-column="5" selection-end-line="218" selection-end-column="5" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="OrthographicRulesHelper.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="OrthographicRulesHelper.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/OrthographicRulesHelper.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-887">
+            <state relative-caret-position="90">
               <caret line="11" column="13" lean-forward="false" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
               <folding />
             </state>
@@ -71,7 +45,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="StartStateHelper.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="StartStateHelper.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/StartStateHelper.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="180">
@@ -84,8 +58,8 @@
       <file leaf-file-name="FSTBuilder.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/FSTBuilder.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1589">
-              <caret line="120" column="55" lean-forward="true" selection-start-line="120" selection-start-column="55" selection-end-line="120" selection-end-column="55" />
+            <state relative-caret-position="1395">
+              <caret line="94" column="38" lean-forward="false" selection-start-line="94" selection-start-column="38" selection-end-line="94" selection-end-column="38" />
               <folding />
             </state>
           </provider>
@@ -797,7 +771,7 @@
       <updated>1509725213197</updated>
       <workItem from="1509725214762" duration="30641000" />
       <workItem from="1510246927624" duration="50000" />
-      <workItem from="1510331415961" duration="16570000" />
+      <workItem from="1510331415961" duration="17679000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <created>1510071791651</created>
@@ -859,7 +833,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="47261000" />
+    <option name="totallyTimeSpent" value="48370000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="877" extended-state="6" />
@@ -874,7 +848,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32919255" sideWeight="0.50277776" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32919255" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32919255" sideWeight="0.49722221" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32919255" sideWeight="0.49722221" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1043,13 +1017,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="7" lean-forward="false" selection-start-line="0" selection-start-column="7" selection-end-line="0" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/FSTString.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="435">
-          <caret line="34" column="32" lean-forward="false" selection-start-line="34" selection-start-column="32" selection-end-line="34" selection-end-column="32" />
         </state>
       </provider>
     </entry>
@@ -1287,26 +1254,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/FSTBuilder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1589">
-          <caret line="120" column="55" lean-forward="true" selection-start-line="120" selection-start-column="55" selection-end-line="120" selection-end-column="55" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/SuffixHelper.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="225">
           <caret line="15" column="33" lean-forward="false" selection-start-line="15" selection-start-column="33" selection-end-line="15" selection-end-column="33" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/FST.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3060">
-          <caret line="218" column="5" lean-forward="true" selection-start-line="218" selection-start-column="5" selection-end-line="218" selection-end-column="5" />
           <folding />
         </state>
       </provider>
@@ -1319,18 +1270,42 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/StartStateHelper.java">
+    <entry file="file://$PROJECT_DIR$/src/FST.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="16" column="0" lean-forward="true" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+        <state relative-caret-position="1655">
+          <caret line="218" column="5" lean-forward="true" selection-start-line="218" selection-start-column="5" selection-end-line="218" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/FSTString.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="435">
+          <caret line="34" column="32" lean-forward="false" selection-start-line="34" selection-start-column="32" selection-end-line="34" selection-end-column="32" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/OrthographicRulesHelper.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-887">
+        <state relative-caret-position="90">
           <caret line="11" column="13" lean-forward="false" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/FSTBuilder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1395">
+          <caret line="94" column="38" lean-forward="false" selection-start-line="94" selection-start-column="38" selection-end-line="94" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/StartStateHelper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="16" column="0" lean-forward="true" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
           <folding />
         </state>
       </provider>
