@@ -59,6 +59,11 @@ public class FSTBuilder implements FSTConstants {
 
         //Make main FST (lexical intermediate FST)
         FST mainFST = FST.buildFST(fstInputList, MAIN_FST_START_STATE_NUM);
+
+        //Special file for reverse FST
+        fstInputList.add("fst1Reverse.txt");
+        fstInputList.add("int_to_lex_reverse.txt");
+        fstInputList.add(OrthographicRulesHelper.modifyFile("int_to_lex_reverse.txt"));
         FST mainReverseFST = FST.buildReverseFST(fstInputList, MAIN_FST_START_STATE_NUM);
 
         //Make orthographic FSTs
@@ -123,9 +128,11 @@ public class FSTBuilder implements FSTConstants {
         FST revSuffixesFST = FST.buildFST(revSuffixesInputFiles, REV_SUFFIX_FST_START_STATE_NUM);
         
         //Test
-//        System.out.println(chainFST("snoitaeziretupmoc", revKInsertionFST, revYReplacementFST, revEInsertionFST, revSuffixesFST));
+        String reversedString = chainFST("snoitaeziretupmoc", revKInsertionFST, revYReplacementFST, revEInsertionFST, revSuffixesFST);
+        System.out.println(reversedString);
+        System.out.println(chainFST((new StringBuffer(reversedString).reverse().toString()), mainReverseFST));
 //        System.out.println(chainFST("blissNP", mainFST, kInsertionFST, yReplacementFST, eInsertionFST));
-        System.out.println(chainFST("bliss", mainReverseFST));
+//        System.out.println(chainFST("bliss", mainReverseFST));
 
     }
 }

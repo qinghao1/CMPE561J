@@ -60,6 +60,7 @@ public class FST implements FSTConstants {
             char c = s.charAt(i);
 
             List<State> toRemove = new ArrayList<>();
+            List<Pair<State, String>> toAdd = new ArrayList<>();
             for (State possibleState : stateSet.keySet()) {
                 Pair<String, Integer> transition = possibleState.transitions.get(c);
                 if (transition == null) {
@@ -76,7 +77,7 @@ public class FST implements FSTConstants {
                     } else {
                         newOutput = possibleStateOutput + transitionOutput;
                     }
-                    stateSet.put(newState, newOutput);
+                    toAdd.add(new Pair(newState, newOutput));
 
                     if (newState.stateNumber != possibleState.stateNumber) {
                         toRemove.add(possibleState);
@@ -84,6 +85,11 @@ public class FST implements FSTConstants {
                 }
             }
             for (State toBeRemovedState : toRemove) stateSet.remove(toBeRemovedState);
+            for (Pair<State, String> addedStateOutput : toAdd) {
+                stateSet.put(addedStateOutput.getKey(), addedStateOutput.getValue());
+            }
+            toRemove.clear();
+            toAdd.clear();
 
             //Add all possible epsilon transitions
             //As there may be more than 1 epsilon transition in series, we run this until no new states are added
@@ -107,8 +113,11 @@ public class FST implements FSTConstants {
                             newOutput = possibleStateOutput + transitionOutput;
                         }
                         if (!stateSet.containsKey(newState)) newStateAdded = true;
-                        stateSet.put(newState, newOutput);
+                        toAdd.add(new Pair(newState, newOutput));
                     }
+                }
+                for (Pair<State, String> addedStateOutput : toAdd) {
+                    stateSet.put(addedStateOutput.getKey(), addedStateOutput.getValue());
                 }
             }
 
