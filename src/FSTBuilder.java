@@ -160,7 +160,5 @@ public class FSTBuilder implements FSTConstants {
         	String res = chainFST(inter,kInsertionFST, yReplacementFST, eInsertionFST, carDeletionFST);
         	System.out.println("Your word is " + res);
         }
-
-        System.out.println(chainFST("materialNZ", mainFST));
     }
 }
