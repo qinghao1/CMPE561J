@@ -42,12 +42,6 @@ public class FST implements FSTConstants {
         }
     }
 
-    void addArc(int _state1, int _state2, char i, String o) {
-        if (!stateList.containsKey(_state1)) stateList.put(_state1, new State(_state1));
-        if (!stateList.containsKey(_state2)) stateList.put(_state2, new State(_state2));
-        stateList.get(_state1).addTransition(i, o, _state2);
-    }
-
     int START_STATE_NUM;
     HashMap<Integer, State>stateList = new HashMap<>();
 
@@ -55,6 +49,14 @@ public class FST implements FSTConstants {
         START_STATE_NUM = _START_STATE_NUM;
     }
 
+    //Add arc/transition between two states, and creates them if they don't exist
+    void addArc(int _state1, int _state2, char i, String o) {
+        if (!stateList.containsKey(_state1)) stateList.put(_state1, new State(_state1));
+        if (!stateList.containsKey(_state2)) stateList.put(_state2, new State(_state2));
+        stateList.get(_state1).addTransition(i, o, _state2);
+    }
+
+    //"Feeds", or inputs String to FST character by character.
     String feed(String s) {
         State currentState = stateList.get(START_STATE_NUM);
 

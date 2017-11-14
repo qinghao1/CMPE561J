@@ -93,6 +93,7 @@ public class FSTBuilder implements FSTConstants {
         yReplacementInputFiles.add(yReplacementOthersFileName);
         FST yReplacementFST = FST.buildFST(yReplacementInputFiles, Y_REP_FST_START_STATE_NUM);
         
+        //Caret(^) deletion FST
         ArrayList<String> carDeletionInputFiles = new ArrayList<>();
         String carDeletionRuleFile = "cariot_deletion.txt";
         String carDeletionOthersFileName = OrthographicRulesHelper.modifyFile(carDeletionRuleFile);
@@ -135,13 +136,13 @@ public class FSTBuilder implements FSTConstants {
         revSuffixesInputFiles.add(revSuffixesOthersFileName);
         FST revSuffixesFST = FST.buildFST(revSuffixesInputFiles, REV_SUFFIX_FST_START_STATE_NUM);
 
+        //User Interface
         System.out.println("Surface level to lexical leve? (1)");
         System.out.println("Lexical level to surface level? (2)");
         int direction = 0;
         Scanner reader = new Scanner(System.in);  // Reading from System.in
         System.out.println("Enter a number: ");
         direction = reader.nextInt(); // Scans the next token of the input as an int.
-        //once finished
         System.out.println("Enter your word: ");
         reader = new Scanner(System.in);
         String originalString = reader.nextLine();
